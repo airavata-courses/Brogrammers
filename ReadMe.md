@@ -1,6 +1,6 @@
 # Team Brogrammers
 
-## Team Mebers:
+## Team Members:
 ### Arjun Bhavsar
 ### Ishita Kumar
 ### Kasturi Nikharge
