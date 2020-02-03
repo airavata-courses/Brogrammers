@@ -1,0 +1,128 @@
+
+  <!DOCTYPE html>
+  <html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="login.css">
+  
+  </head>
+  <body>
+  <!-- partial:index.partial.html -->
+  <div id="wrapper">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">User Dashboard</a>
+  
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bell fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <h6 class="dropdown-header">Notifications</h6>
+              <a class="dropdown-item" href="#">Alerts</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <h6 class="dropdown-header">Settings</h6>
+              <a class="dropdown-item" href="#">Account</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+  
+      <div class="sidebar" role="navigation">
+        <div class="sidebar-nav">
+          <ul class="nav flex-column" id="side-menu">
+            <li class="nav-item sidebar-search">
+              <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
+            </li>
+  
+            <li class="nav-item">
+              <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="session.html"><i class="fa fa-edit fa-fw"></i> Sessions</a>
+            </li>
+  
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#secondLevel" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fa fa-sitemap fa-fw"></i> Activities<span class="fa arrow"></span>
+              </a>
+              <ul class="collapse nav-second-level" id="secondLevel">
+                <li class="nav-item">
+                  <a href="#">Second </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#">Second </a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <div id="content">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Data Download</h4>
+          <h6 class="card-subtitle mb-2 text-muted">What Task would you like to carry out today</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select
+            </button>
+            <div class="dropdown-menu" aria-labelledby="Select">
+              <a class="dropdown-item" href="#">Data</a>
+              <a class="dropdown-item" href="#">Rain</a>
+              <a class="dropdown-item" href="#">Sun</a>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <!-- partial -->
+    <script src='https://code.jquery.com/jquery-3.1.1.slim.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
+  </body>
+  </html>
+  
