@@ -1,33 +1,36 @@
 package com.brogrammer.accessdatauser.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brogrammer.accessdatauser.document.User;
-import com.brogrammer.accessdatauser.repository.UserRepository;
+import com.brogrammer.accessdatauser.document.UserList;
+import com.brogrammer.accessdatauser.service.UserDetailsService;
 
 @RestController
-@RequestMapping("/rest/users")
+@RequestMapping("/rest/user")
 public class UserController {
+	
 	@Autowired
-	private UserRepository userRepository;
+	private UserDetailsService userDetailsService;
 	
 	@GetMapping("/all")
-	public List<User> getAll(){
-		return userRepository.findAll();
+	public UserList getAll(){
+		return userDetailsService.getAllUsers();
 	}
 	
-	@PutMapping("/save")
-	public User save(User userBean){
-		userBean.setName("Ishita");
-		userBean.setAddress("HC");
-		userBean.setEmailID("ishkumar@iu.edu");
-		return userRepository.save(userBean);
+	@PostMapping("/login")
+	public User login(@RequestBody User userBean) {
+		return userDetailsService.isLogin(userBean);
+	}
+	
+	@PostMapping("/register")
+	public User register(@RequestBody User userBean){
+		return userDetailsService.register(userBean);
 	}
 	
 	

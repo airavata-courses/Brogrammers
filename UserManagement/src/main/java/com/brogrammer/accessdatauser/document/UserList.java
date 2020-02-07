@@ -1,4 +1,4 @@
-package com.ads.pojo;
+package com.brogrammer.accessdatauser.document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,8 +10,7 @@ public class UserList implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4738449256976151371L;
-	// Wrapper Class To Consume List of Users 
+	private static final long serialVersionUID = 5410688892699095113L;
 
 	private List<User> users;
 

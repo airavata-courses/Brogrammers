@@ -1,11 +1,39 @@
 package com.ads.pojo;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4239554033379891576L;
+	String id;
 	String name;
-	String emailID;
 	String mobileNumber;
 	String address;
+	String emailID;
+	String password;
+	String status; 
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -30,6 +58,10 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", emailID=" + emailID + ", mobileNumber=" + mobileNumber + ", address=" + address
+				+ "]";
+	}
 	
 }

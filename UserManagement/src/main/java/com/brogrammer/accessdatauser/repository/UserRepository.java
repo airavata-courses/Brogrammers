@@ -6,5 +6,4 @@ import com.brogrammer.accessdatauser.document.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
 	public User findUserByName(String firstName);
-	//public boolean save(User user);
 }
