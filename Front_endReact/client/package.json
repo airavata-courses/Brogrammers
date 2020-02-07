@@ -19,5 +19,9 @@
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "typescript": "^3.7.5"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
