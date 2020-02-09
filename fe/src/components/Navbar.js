@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 
-export default class navbar extends Component {
+export default class Navbar extends Component {
+
     render() {
         return (
             <div>
@@ -15,9 +16,9 @@ export default class navbar extends Component {
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-     
       
     </ul>
+   
    
   </div>
 </nav>

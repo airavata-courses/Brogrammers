@@ -1,14 +1,16 @@
 
 import React, { Component} from 'react';
 import "../style/dashboard.css";
-import Navbar from "./navbar.js";
-import { Link } from 'react-router-dom';
+import Navbar from "./Navbar.js";
+import { Link, Redirect } from 'react-router-dom';
+
 
 export default class dashboard extends Component {
     render() {
         return (
             <div>
                 <Navbar></Navbar>
+                
   <div className="sidebar " role="navigation">
         <div class="sidebar-nav navbar-dark bg-dark" >
           <ul class="nav flex-column" id="side-menu">
@@ -23,13 +25,19 @@ export default class dashboard extends Component {
               </div>
             </li>
    */}
+  <li class="nav-item">
+              <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> </a>
+            </li>
             <li class="nav-item">
               <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li class="nav-item">
             <Link to ="/usersessions">User Activity</Link>
             </li>
-  
+            <li class="nav-item">
+            <Link to ="/forms">Data </Link>
+            </li>
+            
             <li class="nav-item ">
               <a data-toggle="collapse" href="#secondLevel" aria-expanded="false" aria-controls="collapseExample">
               <Link to ="/usersession">User Info</Link>
@@ -46,6 +54,7 @@ export default class dashboard extends Component {
             </li>
           </ul>
         </div>
+  
       </div>
 
       <div id="content">
@@ -69,15 +78,11 @@ export default class dashboard extends Component {
           <h6 class="card-subtitle mb-2 text-muted">What Task would you like to carry out today</h6>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <center>
-          <div class="dropdown">
-  <button class="btn btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">Select
+          {/* <div class="">
+  <button class="btn btn btn-outline-secondary dropdown-toggle" >  <Redirect to ="/forms"/>Extract
   <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-  <a className="dropdown-item" href="#">Data</a>
-              <a className="dropdown-item" href="#">Rain</a>
-              <a className="dropdown-item" href="#">Sun</a>
-  </ul>
-</div>
+
+</div> */}
 </center>
         </div>
       </div>

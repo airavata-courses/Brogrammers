@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import request from 'request';
+import '../App.css'
+import lala from "./giphy.gif"
 
 class Register extends Component {
 	constructor(props) {
@@ -18,6 +22,8 @@ class Register extends Component {
 
 		this.displayLogin = this.displayLogin.bind(this);
 	}
+
+	// http://localhost:8080/rest/user/register
 
 	update(e) {
 		let name = e.target.name;
@@ -49,11 +55,45 @@ class Register extends Component {
 			email: '',
 			password: ''
 		});
+
+		const { history } = this.props;
+		const user = {
+			name: this.state.name,
+			id: this.state.id,
+			mobileNumber:this.state.mobileNumber,
+			address:this.state.address,
+			emailID:this.state.emailID,
+			password:this.state.password,
+			status:this.state.status
+		  
+		  };
+		
+		axios.post('http://localhost:8080/rest/user/register', user, {headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+		}})
+		  .then(function (response) {
+			 
+			  if (response.status == "200")
+			  {
+				console.log("Registered Succesfully");
+				history.push('/dashboard')
+			
+
+			  }
+			console.log(response);
+		  })
+		  .catch(function (error) {
+			console.log("",error);
+			console.log("data", {user});
+		  });
 	}
+
+	
 
 	render() {
 		return (
-			<div className="container">
+			<div className="container" style={{backgroundImage: 'url(' + lala + ')' ,width:"100%", height:"auto", backgroundPosition:"center", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
 			<div className="register">
 				<form onSubmit={this.displayLogin}>
 					<h2>Register</h2>
