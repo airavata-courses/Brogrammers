@@ -10,4 +10,6 @@ public interface UserDetailsService {
 	public UserList getAllUsers();
 	
 	public User register(User userBean);
+
+	public User signOut(User userBean);
 }

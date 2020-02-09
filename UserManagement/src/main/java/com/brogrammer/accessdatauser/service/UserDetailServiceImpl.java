@@ -21,6 +21,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		
 		if(userBean.getPassword().equalsIgnoreCase(user.getPassword())){
 			user.setStatus("LogIn");
+			userRepository.save(user);
 			return user;
 		}else {
 			user = new User();
@@ -28,8 +29,6 @@ public class UserDetailServiceImpl implements UserDetailsService{
 			user.setStatus("Wrong Password");;
 			return user;
 		}
-		
-		 
 	}
 
 	@Override
@@ -44,6 +43,9 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		return userRepository.save(userBean);
 	}
 
-	
-	
+	@Override
+	public User signOut(User userBean) {
+		userBean.setStatus("Signed Out");
+		return userRepository.save(userBean);
+	}
 }

@@ -12,9 +12,9 @@ import com.ads.pojo.UserList;
 
 @RestController()
 @RequestMapping("/rest")
-public class userController {
+public class UserController {
 	
-	@Autowired 
+	@Autowired
 	private UserDetailsService userDetailsService;
 	
 	@RequestMapping("/getusers")
@@ -31,8 +31,11 @@ public class userController {
 	public User addUser(@RequestBody User user) {
 	
 		return userDetailsService.registernewUser(user);
-		
-		
+	}
+	
+	@PostMapping(path = "/user/signOut", consumes = "application/json", produces = "application/json")
+	public User signOut(@RequestBody User user) {
+		return userDetailsService.signOut(user);
 	}
 
 }

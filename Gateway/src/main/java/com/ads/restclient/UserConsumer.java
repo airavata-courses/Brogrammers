@@ -9,6 +9,8 @@ public interface UserConsumer {
 	
 	public UserList getAllUsers();
 	
-	public User registernewUser(User user);	
+	public User registernewUser(User user);
+
+	public User signout(User user);	
 
 }

@@ -27,6 +27,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public User registernewUser(User user) {
 		return userConsumer.registernewUser(user);
 	}
+
+	@Override
+	public User signOut(User user) {
+		return userConsumer.signout(user);
+	}
 	
 	
 	
