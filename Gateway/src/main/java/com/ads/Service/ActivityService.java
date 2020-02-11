@@ -1,8 +1,8 @@
 package com.ads.Service;
 
-import com.ads.pojo.Reflectivity;
+import com.ads.pojo.UserSession;
 
 public interface ActivityService {
 	
-	public void reflectityService(Reflectivity reflectivityBean);
+	public String reflectityService(UserSession userSession);
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ads.communicationChannel.DataRetrieveHandler;
-import com.ads.pojo.Reflectivity;
+import com.ads.pojo.UserSession;
 
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -16,15 +16,15 @@ public class ActivityServiceImpl implements ActivityService {
 	DataRetrieveHandler dataRetrieveHandler;
 	
 	@Override
-	public void reflectityService(Reflectivity reflectivityBean) {
-		
+	public String reflectityService(UserSession userSession) {
 		
 		try {
-			dataRetrieveHandler.sendInputForReflectivity(reflectivityBean);
+			return dataRetrieveHandler.sendInputForReflectivity(userSession);
 		} catch (IOException | TimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 		
 		
 	}
