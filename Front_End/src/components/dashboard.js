@@ -35,7 +35,7 @@ export default class dashboard extends Component {
             <Link to ="/usersessions">User Activity</Link>
             </li>
             <li class="nav-item">
-            <Link to ="/forms">Data </Link>
+            <Link to ="/forms">Reflectivity Data </Link>
             </li>
             
             <li class="nav-item ">
@@ -74,9 +74,9 @@ export default class dashboard extends Component {
       </ul>
       <div class="card">
         <div class="card-block">
-          <h4 class="card-title" style={{textAlign:"center"}}>Data Download</h4>
+          {/* <h4 class="card-title" style={{textAlign:"center"}}>Data Download</h4>
           <h6 class="card-subtitle mb-2 text-muted">What Task would you like to carry out today</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
       <center>
           {/* <div class="">
   <button class="btn btn btn-outline-secondary dropdown-toggle" >  <Redirect to ="/forms"/>Extract

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import request from 'request';
 import '../App.css'
-import lala from "./giphy.gif"
+import lala from "./giphy.gif";
+import "../style/frontpage.css";
 
 class Register extends Component {
 	constructor(props) {
@@ -93,7 +94,8 @@ class Register extends Component {
 
 	render() {
 		return (
-			<div className="container" style={{backgroundImage: 'url(' + lala + ')' ,width:"100%", height:"auto", backgroundPosition:"center", backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+			<div className="bg-img1">
+			<div className="container text-center">
 			<div className="register">
 				<form onSubmit={this.displayLogin}>
 					<h2>Register</h2>
@@ -135,7 +137,8 @@ class Register extends Component {
 					<input type="submit" value="Login" />
 				</form>
 
-				<Link to="/">Login Here</Link>
+		<h5>Already have an Account?	<Link to="/login">Login Here</Link></h5>	
+			</div>
 			</div>
 			</div>
 		);

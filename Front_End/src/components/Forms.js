@@ -9,119 +9,141 @@ import url from '../config/default'
 import "react-datepicker/dist/react-datepicker.css";
 
 
-
 class Forms extends Component {
 
-    constructor() {
-        super();
-        this.handleSubmit = this.handleSubmit.bind(this);
-
+    constructor(props) {
+        super(props);
+    
         this.state = {
-            startDate: new Date(),
-            event_description: '',
-            event_category: ''
-    
+          activity: []
         };
+        // this.handleChange = this.handleChange.bind(this);
+        // this.onSubmit = this.onSubmit.bind(this);
       }
-
     
-    handleChange = e => {
-        // this.setState({
-        //     startDate: e.target.value
-        // });
+      componentDidMount() {
+        axios
+          .get(`${url.sessionManagement}/get_user_session/${localStorage.getItem('user')}`)
+          .then(response => {
+            console.log(response.data);
+           
+    
+            this.setState({ activity: response.data });
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
+    
+
+
+    handleCategory = e => {
+
         this.setState({
-            event_description: e.target.value
-        });
+            event_category: e.target.value
+        })
+
     };
 
+    handleDate = e => {
 
-    handleSubmit (e) {
+        this.setState({
+            event_date: new Date(e.target.value)
+        })
+
+    };
+
+    handleDescription = e => {
+        this.setState({
+            event_description: e.target.value
+        })
+    }
+
+
+
+    handleSubmit(e) {
         var obj = this.state
         obj.user = localStorage.getItem('user')
+        console.log(obj)
         axios.post(`${url.sessionManagement}/put_user_into_session`, obj)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(e => {
-            console.log(e)
-        })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(e => {
+                console.log(e)
+            })
         e.preventDefault();
     }
     render() {
         return (
             <div>
                 <Navbar></Navbar>
+                <div className="container1" style={{backgroundColor:"#ebf6fa"}}>
+                <div class='container mt-6 mb-6' >
+                    <form onSubmit={this.handleSubmit} >
+                        <div className='row mt-6' mt-6 mb-6>
+                            <div className='col-sm-12'>
+                                <div className='card' style={{backgroundColor:"#a3d4e6"}}>
+                                    <div className='card-header d-flex align-items-center' style={{backgroundColor:"#ffffff"}}>
+                                        <i className='material-icons mr-2' >Reflectivity Data Extractor</i>
 
-                <div class='container mt-5 mb-5'>
-                    <form onSubmit={this.handleSubmit}>
-                        <div class='row mt-5'>
-                            <div class='col-sm-12'>
-                                <div class='card'>
-                                    <div class='card-header d-flex align-items-center'>
-                                        <i class='material-icons mr-2' style={{ textAlign: "center" }}>Data Extractor</i>
-
-                                    </div>
-                                    <div class='card-body'>
-
-                                        <div class='form-row'>
-                                            <div class='col-sm-9'>
-                                                <div class='form-group'>
-                                                    <label for='event_category'>Category</label>
-                                                    <select class='form-control' id='event_category' type='text'>
-                                                        <option value='music' id="username" name="username">Weather</option>
-                                                        <option value='music'>Weather</option>
-                                                        <option value='music'>Weather</option>
-                                                        <option value='music'>Weather</option>
-                                                        <option value='music'>Weather</option>
-                                                        <option value='music'>Weather</option>
-                                                    </select>
-                                                </div>
+                                    </div>  
+                                    <div className='card-body text-center'>
+                                    <label for=''>Radar Type</label>
+                                        <div className='form-row'>
+                                            <div className='col-sm-12'>
+                                                <input
+                                                    style={{width: "100%"}}
+                                                    type="text"
+                                                    value={this.state.event_category}
+                                                    onChange={this.handleCategory}
+                                                    id='event_category'
+                                                    placeholder="Enter Your Radar Configuration"
+                                                    name="event_category" />
                                             </div>
 
                                         </div>
-                                        <div class='form-row'>
-                                            <div class='col-sm-6'>
 
-                                            </div>
-
-                                        </div>
                                         <label for=''>Date</label>
                                         <div class='form-group'>
-                                            {/* <button class='btn btn-light d-flex align-items-center'>
-                              <i class='material-icons mr-2'>add</i>
-                          
-                            </button> */}
-                                            <DatePicker
-                                                selected={this.state.startDate}
-                                                onChange={this.handleChange}
-                                            />
-                                        </div>
+                                        <input
+                                                    style={{width: "100%"}}
+                                                    type="date"
+                                                    value={this.state.date}
+                                                    onChange={this.handleDate}
+                                                    id='event_date'
+                                                    name="event_date" />
+                                            </div>
+                                     
                                         <div class='form-group'>
                                             <label for='event_description'>Description</label>
-                                            <textarea class='form-control' value={this.state.event_description} onChange={this.handleChange.bind(this)} id='event_description' name='event_description' placeholder='Write something about your event' rows='4'></textarea>
+                                            <textarea className='form-control'
+                                                value={this.state.event_description}
+                                                onChange={this.handleDescription}
+                                                id='event_description'
+                                                name='event_description'
+                                                placeholder='Enter Small Description'
+                                                rows='4'></textarea>
                                         </div>
-                                        <div class='form-group'>
-                                            <label for='event_image'>Image</label>
-
-                                            <input accept='.jpg, .jpeg, .png' class='form-control' id='event_image' type='file' />
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
 
 
-                        <div class='form-group d-flex justify-content-center mt-3'>
-                            <button class='btn d-flex align-items-center mr-3'>
-
-                                Cancel
+                        <div className='form-group d-flex justify-content-center mt-3'>
+                            <button className='btn d-flex align-items-center mr-3'>
+                            <Link to="/dashboard">Cancel</Link>
+                                
                     </button>
-                            <button class='btn btn-primary d-flex align-items-center float-right' >
+                            <button className='btn btn-primary d-flex align-items-center float-right' >
 
                                 Sumbit
                     </button>
                         </div>
                     </form>
+                </div>
                 </div>
             </div>
         );

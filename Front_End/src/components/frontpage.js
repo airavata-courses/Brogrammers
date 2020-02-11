@@ -25,7 +25,7 @@ export default class frontpage extends Component {
                 }}>Weather Forecast</h2>
 
                 <span className='btn1'><Link to="/login">Login</Link></span>
-                <span className='btn1'><Link to="/login">Register</Link></span>
+                <span className='btn1'><Link to="/register">Register</Link></span>
               </div>
             </div>
           </div>

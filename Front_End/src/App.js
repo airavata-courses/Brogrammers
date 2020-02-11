@@ -7,12 +7,16 @@ import UserSessions from './components/usersessions';
 import Dashboard from './components/dashboard';
 import Forms from './components/Forms.js';
 import './App.css';
+import Navbar from './components/Navbar';
 import usersessions from './components/usersessions';
 
 class App extends Component {
+  
   render() {
     return (
       <div>
+        {/* { ((window.location.pathname) = '/' || (window.location.pathname = '/login')) ? '': ' <Navbar />'} */}
+      
         <Route exact path="/" component={FrontPage} />
         <Route exact path="/login" component={Login} />
         <Route path="/register" component={Register} />

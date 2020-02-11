@@ -1,12 +1,44 @@
 import React, { Component } from 'react'
+import axios from 'axios';
+import url from '../config/default'
+  
+import moment from 'moment';
+import Navbar from "./Navbar.js";
 
+import Forms from './Forms'
 
 export default class usersessions extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activity: []
+    };
+    // this.handleChange = this.handleChange.bind(this);
+    // this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    axios
+      .get(`${url.sessionManagement}/get_user_session/${localStorage.getItem('user')}`)
+      .then(response => {
+        console.log(response.data);
+       
+
+        this.setState({ activity: response.data });
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+
   render() {
     return (
       <div>
+        <Navbar></Navbar>
         <h1 style={{ fontSize: "50px", textAlign: "center" }}>Activity</h1>
-        <div class="container">
+        <div class="container2">
           <div class="row">
 
             <div class="col-xs-12">
@@ -16,31 +48,37 @@ export default class usersessions extends Component {
          </caption>
                   <thead>
                     <tr>
-
-                      <th>Authorization</th>
-                      <th>Activity</th>
-                      <th>Login Time</th>
-                      <th>Logout Time</th>
-
-
-                      <th>Usage</th>
-
+                      <th>Created</th>
+                      <th>Log Date</th>
+                      <th>Radar Type</th>
+                      <th>Description</th>
+                      {/* <th>History</th> */}
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>Argentina</td>
-                      <td>Spanish (official), English, Italian, German, French</td>
-                      <td>41,803,125</td>
-                      <td>31.3</td>
-                      <td>2,780,387</td>
-                    </tr>
-
-
-
-
-                  </tbody>
-
+                  {this.state.activity.map(activity=> (
+                    <tbody>
+                      <tr>
+                        <td>{moment(activity.created  ).format('DD MMM YYYY')}</td>
+                        <td>{moment(activity.session.date).format('DD MMM YYYY')}</td>
+                        <td>{activity.session.radar}</td>
+                        <td>{activity.session.description}</td>
+                       {/* <td>
+                       <button
+                        className="btn btn-info"
+                          style={{
+                          
+                            backgroundColor:"lightBlue",
+                            border:"none",
+                            fontSize:"1rem",
+                            
+                          }}
+                         
+                        >Go
+                        </button>
+                       </td> */}
+                      </tr>
+                    </tbody>
+                  ))}
                 </table>
               </div>
             </div>
