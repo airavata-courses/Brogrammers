@@ -26,8 +26,8 @@ connectionPublish = pika.BlockingConnection(
 channlePostAnalysis = connectionPublish.channel()
 
 channlePostAnalysis.queue_declare(queue='gateway')
-AWS_ACCESS_KEY_ID = 'AKIAWZXOTITBX2KGL5G5'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
 #bucket_name = AWS_ACCESS_KEY_ID.lower() + '-dump'
 
 # bucket = conn.create_bucket(bucket_name,
