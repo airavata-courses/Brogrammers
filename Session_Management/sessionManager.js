@@ -28,14 +28,18 @@ app.get('/', function(req, res){
 });
 
 app.post('/put_user_into_session', function (req, res, next) {
-  console.log(req.body)
+  
   var sessionData = {
-   user: req.body.user,  
-   data: {
+   user: req.body.user, 
+   end: new Date(), 
+   session: {
       description: req.body.event_description,
-      date: req.body.startDate
+      date: req.body.event_date,
+      radar: req.body.event_category
    }
   }
+
+  console.log(sessionData)
 
   new Session(sessionData)
   .save(function(err, done) {
@@ -46,9 +50,9 @@ app.post('/put_user_into_session', function (req, res, next) {
 })
 
 app.get('/get_user_session/:id', function (req, res, next) {
-   Session.find({user: req.params.id}, function(err, data) {
+   Session.find({user: req.params.id}, function(err, session) {
       if (err) console.log(err)
-      res.status(200).json(data)
+      res.status(200).json(session)
    })
    
 })
