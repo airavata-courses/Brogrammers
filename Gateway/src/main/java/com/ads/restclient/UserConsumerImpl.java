@@ -20,6 +20,9 @@ public class UserConsumerImpl implements UserConsumer{
 	@Value("${com.gateWay.addNewUserURL}")
 	private String urlToAddNewUser;
 
+	@Value("${com.gateWay.signOutURL}")
+	private String urlForSignOut;
+	
 	@Autowired
 	private RestOperations restOperations;
 
@@ -37,5 +40,10 @@ public class UserConsumerImpl implements UserConsumer{
 	public User registernewUser(User user) {
 		return restOperations.postForObject(urlToAddNewUser, user, User.class);
 		}
+
+	@Override
+	public User signout(User user) {
+		return restOperations.postForObject(urlForSignOut, user, User.class);
+	}
 	
 }

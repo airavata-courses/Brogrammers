@@ -33,5 +33,8 @@ public class UserController {
 		return userDetailsService.register(userBean);
 	}
 	
-	
+	@PostMapping("/signOut")
+	public User signOut(@RequestBody User userBean){
+		return userDetailsService.signOut(userBean);
+	}
 }
