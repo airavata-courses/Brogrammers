@@ -1,93 +1,114 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
+import axios from 'axios';
+import request from 'request';
+import '../App.css'
+import url from '../config/default.js';
+import "../style/frontpage.css";
 
-class Login extends Component {
-	constructor(props) {
-		super(props);
+export default class Login extends React.Component {
+	state = {
+		"id": null,
+		"name": "Brogrammers",
+		"mobileNumber": null,
+		"address": null,
+		"emailID": null,
+		"password": "1234567890",
+		"status": null
+	}
 
-		this.state = {
-			
-            "id": null,
-            "name": "Brogrammers",
-            "mobileNumber": null,
-            "address": null,
-            "emailID": null,
-            "password": "1234567890",
-            "status": null
+	handleChange = event => {
+		this.setState({ userid: event.target.value });
+		this.setState({ fullname: event.target.value });
+		this.setState({ usergroup: event.target.value });
+		this.setState({ emailID: event.target.value });
+		this.setState({ mobile: event.target.value });
+		this.setState({ password: event.target.value });
+	}
+
+	handleSubmit = event => {
+		event.preventDefault();
+
+		const user = {
+			name: this.state.name,
+			id: this.state.id,
+			mobileNumber: this.state.mobileNumber,
+			address: this.state.address,
+			emailID: this.state.emailID,
+			password: this.state.password,
+			status: this.state.status
+
 		};
 
-		this.update = this.update.bind(this);
-
-		this.displayLogin = this.displayLogin.bind(this);
-	}
-
-	update(e) {
-		let name = e.target.name;
-		let value = e.target.value;
-		this.setState({
-			[name]: value
-		});
-	}
-
-	displayLogin(e) {
-		e.preventDefault();
-		console.log('You are logged in');
-		console.log(this.state);
-
-		// axios.post('http://localhost:8080/rest/login', {this.state})
-		// .then(res => {
-		// 	if res.status == '200' {
-		// 		alert('sucess')
-		// 		redirect to login
-		//      how to store the this.state data in localstorage of react user: {name: '', id: '', email: ''}
-		//      print the token
-		//      
-		// 	}
-		// })
-		// .catch(e => {
-		// 	console.log(e)
-		// })
+		// request
+		// 	.post('http://localhost:8080/rest/login')
+		// 	.on('response', function(response) {
+		// 	console.log(response)
+		// 	})
+		const { history } = this.props;
+		console.log(url)
+		axios.post(`http://localhost:8080/rest/login`, user, {
 		
-		this.setState({
-			email: '',
-			password: ''
-		});
+		})
+			.then(function (response) {
+
+				if (response.status == "200") {
+					console.log("logged in Succesfully");
+					console.log("response",response)
+					localStorage.setItem('user', response.data.id)
+					history.push('/dashboard')
+					// localStorage.setItem(name,this.fullname)
+					// return <Redirect to='/dashboard' />
+
+				}
+				console.log(response);
+			})
+			.catch(function (error) {
+				console.log("ALLAL", error);
+				console.log("data", { user });
+			});
+
 	}
+
+
 
 	render() {
 		return (
-			<div className="container">
-			<div className="login">
-				<form onSubmit={this.displayLogin}>
-					<h2>Login</h2>
-					<div className="username">
-						<input
-							type="text"
-							placeholder="Username..."
-							value={this.state.email}
-							onChange={this.update}
-							name="email"
-						/>
+			<div className="bg-img1">
+				<div className="container text-center">
+					<div className="login" >
+						<form onSubmit={this.handleSubmit}>
+							<h2 style={{ color: "#000000" }}>Login</h2>
+							<div className="username">
+								<input
+									type="text"
+									placeholder="Username..."
+
+									onChange={this.handleChange}
+									name="email"
+								/>
+							</div>
+
+							<div className="password">
+								<input
+									type="password"
+									placeholder="Password..."
+
+									onChange={this.handleChange}
+									name="password"
+								/>
+							</div>
+							<div className="wrapper text-center">
+								<input style={{ justifyContent: "center" }} type="submit" />
+							</div>
+						</form>
+
+						<Link to="/register">Create an account</Link>
 					</div>
-
-					<div className="password">
-						<input
-							type="password"
-							placeholder="Password..."
-							value={this.state.password}
-							onChange={this.update}
-							name="password"
-						/>
-					</div>
-
-					<input type="submit" value="Login" />
-				</form>
-
-				<Link to="/register">Create an account</Link>
-			</div>
+				</div>
 			</div>
 		);
 	}
 }
 
-export default Login;
+
