@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class UserSession implements Serializable{
 
+	@Override
+	public String toString() {
+		return "UserSession [end=" + end + ", _id=" + _id + ", user=" + user + ", session=" + session + ", __v=" + __v
+				+ "]";
+	}
 	/**
 	 * 
 	 */
@@ -18,6 +23,7 @@ public class UserSession implements Serializable{
 		return end;
 	}
 	public void setEnd(String end) {
+		
 		this.end = end;
 	}
 	public String get_id() {

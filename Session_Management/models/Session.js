@@ -3,13 +3,9 @@ var Schema = mongoose.Schema;
 
 const sessionSchema = new Schema({
 	user: { type: String },
-  end: {
-		type: Date,
-		default: Date.now(),
-		index: {expires: '2d'}
-	},
-  data: {
-    category: {type: String},
+  end: {type: Date},
+  session: {
+    radar: {type: String},
     date: {type: Date},
     description: {type: String}
   }

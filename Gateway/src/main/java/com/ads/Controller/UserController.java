@@ -1,6 +1,7 @@
 package com.ads.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.ads.pojo.UserList;
 
 @RestController()
 @RequestMapping("/rest")
+@CrossOrigin(value = "http://localhost:3000")
 public class UserController {
 	
 	@Autowired
