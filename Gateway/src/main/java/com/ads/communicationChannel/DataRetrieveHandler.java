@@ -9,6 +9,7 @@ import com.ads.pojo.UserSession;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.DeliverCallback;
 
 import net.minidev.json.JSONObject;
 
@@ -47,19 +48,10 @@ public class DataRetrieveHandler {
 		 * consumerTag->{});
 		 */
 		
-
-		/*
-		 * QueueingConsumer consumer = new QueueingConsumer(ch);
-		 * ch.basicConsume(POSTANALYSISREFLECTIVITY, true, consumer);
-		 * 
-		 * while (true) { QueueingConsumer.Delivery delivery = consumer.nextDelivery();
-		 * String message = new String(delivery.getBody());
-		 * System.out.println(" [x] Received '" + message + "'"); }
-		 * 
-		 */		
-		//ch.basicConsume(POSTANALYSISREFLECTIVITY, false, (consumerTag,message)-> {
-			
-		//});
-		return "URL";
+		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+		    String message = new String(delivery.getBody(), "UTF-8");
+		    System.out.println(" [x] Received '" + message + "'");
+		};
+		return ch.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
 	}
 }
