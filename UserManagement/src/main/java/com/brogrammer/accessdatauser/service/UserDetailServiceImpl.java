@@ -1,5 +1,8 @@
 package com.brogrammer.accessdatauser.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
 	@Autowired
 	private UserRepository userRepository;
 	
+	private static final String alreadyLogged = "existingUser";
 	@Override
 	public User isLogin(User userBean) {
 		
@@ -40,6 +44,20 @@ public class UserDetailServiceImpl implements UserDetailsService{
 
 	@Override
 	public User register(User userBean) {
+		
+		if(userBean!=null) {
+			List<User> userList = new ArrayList<User>();
+			userList = userRepository.findAll();
+			for(User user:userList) {
+				if(user.getEmailID().equals(userBean.getEmailID())) {
+					userBean.setStatus(alreadyLogged);
+					return userBean;
+				}
+					
+			}
+			
+		}
+		
 		return userRepository.save(userBean);
 	}
 
