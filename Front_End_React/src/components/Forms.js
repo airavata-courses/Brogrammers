@@ -30,7 +30,8 @@ class Forms extends Component {
                 radar: '',
                 description: ''
 
-            } 
+            } ,
+            flag:''
            
         };
 
@@ -45,6 +46,13 @@ class Forms extends Component {
     //     }
     //    }
 
+    handleClick = event => {
+        axios.get(`${url.gateway}/reflectivity/`)
+        .then(res => {
+          const flag = res.data;
+          this.setState({ flag });
+        })
+      }
 
     handleCategory = e => {
 
@@ -162,7 +170,7 @@ class Forms extends Component {
                             <Link to="/dashboard">Cancel</Link>
                                 
                     </button>
-                            <button className='btn btn-primary d-flex align-items-center float-right' >
+                            <button className='btn btn-primary d-flex align-items-center float-right' onClick={this.handleClick.bind(this)}>
 
                                 Sumbit
                     </button>

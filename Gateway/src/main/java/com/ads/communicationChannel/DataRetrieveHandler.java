@@ -18,7 +18,7 @@ public class DataRetrieveHandler {
 
 	private static final String REFLECTIVITYQUEUE = "data-retrieval-reflectivity";
 	private static final String POSTANALYSISREFLECTIVITY = "post-analysis-reflectivity-gateway";
-
+    private String outputMessage;
 
 	public String sendInputForReflectivity(UserSession userSession) throws IOException, TimeoutException {
 		ConnectionFactory factory =  new ConnectionFactory();
@@ -40,18 +40,28 @@ public class DataRetrieveHandler {
 		//Get URL from post Analysis
 		ch.queueDeclare(POSTANALYSISREFLECTIVITY, false, false, false, null);
 
-		/*
-		 * ch.basicConsume("login-detail",true, (consumerTag,message)->{ User u = null;
-		 * try { u = (User) util.deserialize(message.getBody()); } catch
-		 * (ClassNotFoundException e) { System.out.println("Error While deserializing");
-		 * } System.out.println("Received msg is - "+ u.toString()); },
-		 * consumerTag->{});
-		 */
-		
+		String uRL = new String();
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-		    String message = new String(delivery.getBody(), "UTF-8");
-		    System.out.println(" [x] Received '" + message + "'");
+
+	        String message = new String(delivery.getBody(), "UTF-8");
+
+	        System.out.println(" [x] Received '" + message + "'");
+	        try {
+	            doWork(message);
+	        } finally {
+	            System.out.println(" [x] Done");
+	            ch.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+	        };
 		};
-		return ch.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
+		ch.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
+		
+		
+		return outputMessage;
+	}
+
+
+	private void doWork(String message) {
+		outputMessage = message ;
+		
 	}
 }

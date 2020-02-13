@@ -13,7 +13,7 @@ import com.ads.pojo.UserList;
 
 @RestController()
 @RequestMapping("/rest")
-@CrossOrigin(value = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000","http://localhost:3001"})
 public class UserController {
 	
 	@Autowired
