@@ -16,23 +16,31 @@ public class UserDetailServiceImpl implements UserDetailsService{
 	@Autowired
 	private UserRepository userRepository;
 	
-	private static final String alreadyLogged = "existingUser";
+	private static final String USER_EXISTS = "User already exists";
+	private static final String INCORRECT_PASSOWRD = "incorrect password.Try logging in again";
+	private static final String LOGGED_IN = "Logged In"; 
+	private static final String NO_USER = "No user found."; 
 	@Override
 	public User isLogin(User userBean) {
 		
 		User user = new User();
-		user = userRepository.findUserByName(userBean.getName());
-		
-		if(userBean.getPassword().equalsIgnoreCase(user.getPassword())){
-			user.setStatus("LogIn");
-			userRepository.save(user);
-			return user;
-		}else {
-			user = new User();
-			user.setName(userBean.getName());
-			user.setStatus("Wrong Password");;
-			return user;
+		user = userRepository.findUserByEmailID(userBean.getEmailID());
+		if (null != user) {
+
+			if (userBean.getPassword().equals(user.getPassword())) {
+				user.setStatus(LOGGED_IN);
+				userRepository.save(user);
+				return user;
+			} else {
+				userBean.setStatus(INCORRECT_PASSOWRD);
+				return userBean;
+			}
+		} else {
+			userBean.setStatus(NO_USER);
+			return userBean;
+			
 		}
+		
 	}
 
 	@Override
@@ -50,7 +58,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
 			userList = userRepository.findAll();
 			for(User user:userList) {
 				if(user.getEmailID().equals(userBean.getEmailID())) {
-					userBean.setStatus(alreadyLogged);
+					userBean.setStatus(USER_EXISTS);
 					return userBean;
 				}
 					

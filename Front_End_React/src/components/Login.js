@@ -9,11 +9,11 @@ import "../style/frontpage.css";
 export default class Login extends React.Component {
 	state = {
 		"id": null,
-		"name": "Brogrammers",
+		"name": null,
 		"mobileNumber": null,
 		"address": null,
 		"emailID": null,
-		"password": "1234567890",
+		"password": null,
 		"status": null
 	}
 
