@@ -18,7 +18,7 @@ class Forms extends Component {
         this.handleCategory = this.handleCategory.bind(this);
         this.handleDescription = this.handleDescription.bind(this);
         this.handleDate = this.handleDate.bind(this);
-
+        this.respone_url = ''
         this.state = {
             // startDate: new Date(),
             user:'',
@@ -30,8 +30,7 @@ class Forms extends Component {
                 radar: '',
                 description: ''
 
-            } ,
-            flag:''
+            } 
            
         };
 
@@ -46,13 +45,6 @@ class Forms extends Component {
     //     }
     //    }
 
-    handleClick = event => {
-        axios.get(`${url.gateway}/reflectivity/`)
-        .then(res => {
-          const flag = res.data;
-          this.setState({ flag });
-        })
-      }
 
     handleCategory = e => {
 
@@ -100,7 +92,11 @@ class Forms extends Component {
 
         axios.post(`${url.gateway}/reflectivity/`, SessionData)
             .then(res => {
-                console.log("heher",res)
+                this.respone_url = res.data
+                
+                // check the format of the response object.
+                var win = window.open(res.data, '_blank');
+                win.focus();
             }) 
             .catch(e => {
                 console.log(e)
@@ -170,7 +166,7 @@ class Forms extends Component {
                             <Link to="/dashboard">Cancel</Link>
                                 
                     </button>
-                            <button className='btn btn-primary d-flex align-items-center float-right' onClick={this.handleClick.bind(this)}>
+                            <button className='btn btn-primary d-flex align-items-center float-right' >
 
                                 Sumbit
                     </button>
