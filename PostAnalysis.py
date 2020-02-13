@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from metpy.plots import add_timestamp, ctables
 import pika
 import json
 import matplotlib.pyplot as plt
@@ -17,21 +16,15 @@ connection = pika.BlockingConnection(
     pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
 
-channel.queue_declare(queue='post_analysis')
-
+channel.queue_declare(queue='post-analysis-reflectivity')
 
 # Producer
-connectionPublish = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost'))
-channlePostAnalysis = connectionPublish.channel()
+channel.queue_declare(queue='post-analysis-reflectivity-gateway')
 
-channlePostAnalysis.queue_declare(queue='gateway')
+
+# Put in your secret access key and access key id here
 AWS_ACCESS_KEY_ID = ''
 AWS_SECRET_ACCESS_KEY = ''
-#bucket_name = AWS_ACCESS_KEY_ID.lower() + '-dump'
-
-# bucket = conn.create_bucket(bucket_name,
-#     location=boto.s3.connection.Location.DEFAULT)
 
 def callback(ch, method, properties, body):   
     result = json.loads(body)
@@ -55,15 +48,15 @@ def callback(ch, method, properties, body):
         )
         bucket = conn.get_bucket('ads-plots')
         k = Key(bucket)
-        k.key = 'ads_plot'+str(datetime.now())
+        k.key = 'ads_plots_'+str(datetime.now())
         k.set_contents_from_file(img_data)
-        url = 'https://ads-plots.s3.us-east-2.amazonaws.com/'+'ads-plot'+str(datetime.now()) 
+        url = 'https://ads-plots.s3.us-east-2.amazonaws.com/'+'ads-plot'+str(datetime.now().strftime("%Y%m%d%H%M%S")) 
         print("Publishing to gateway")
-        print("Plot url : ",url)
-        channlePostAnalysis.basic_publish(exchange='', routing_key='gateway', body=json.dumps(url))
+        print("Plot url : ",json.dumps(url))
+        channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=url)
        
         
-channel.basic_consume(queue='post_analysis', on_message_callback=callback, auto_ack=True)
+channel.basic_consume(queue='post-analysis-reflectivity', on_message_callback=callback, auto_ack=True)
 channel.start_consuming()
 
 
