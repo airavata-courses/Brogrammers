@@ -8,17 +8,20 @@ export default class Navbar extends Component {
     render() {
         return (
             <div>
-           <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Brogrammers</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+           <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a className="navbar-brand" href="#">Brogrammers</a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link"  ><Link to="/dashboard">Home</Link> <span class="sr-only">(current)</span></a>
+  <div className="collapse navbar-collapse" id="navbarText">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item active">
+        <a className="nav-link"  ><Link to="/dashboard">Home</Link> <span className="sr-only">(current)</span></a>
       </li>
-      
+      <li className="nav-item active">
+        <a className="nav-link " style={{float: "right"}} ><Link to="/">Logout</Link> </a>
+      </li>
+     
     </ul>
    
    

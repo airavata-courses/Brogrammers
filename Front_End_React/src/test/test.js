@@ -72,7 +72,7 @@ class Forms extends Component {
             <div>
                 {/* <Navbar></Navbar> */}
                 <div className="">
-                <div class='container mt-6 mb-6'>
+                <div className='container mt-6 mb-6'>
                     <form onSubmit={this.handleSubmit}>
                         <div className='row mt-6'>
                             <div className='col-sm-12'>
@@ -98,7 +98,7 @@ class Forms extends Component {
                                         </div>
 
                                         <label for=''>Date</label>
-                                        <div class='form-group'>
+                                        <div className='form-group'>
                                         <input
                                                     style={{width: "100%"}}
                                                     type="date"
@@ -108,7 +108,7 @@ class Forms extends Component {
                                                     name="event_date" />
                                             </div>
                                      
-                                        <div class='form-group'>
+                                        <div className='form-group'>
                                             <label for='event_description'>Description</label>
                                             <textarea className='form-control'
                                                 value={this.state.event_description}

@@ -25,9 +25,29 @@ export default class Login extends React.Component {
 		this.setState({ mobile: event.target.value });
 		this.setState({ password: event.target.value });
 	}
+	
+	//
+
+	//
+	//
+	//
+	//
+
+
 
 	handleSubmit = event => {
 		event.preventDefault();
+
+		
+
+		function encryptPassword(password, key) {
+			var newpass = ''
+			for (var i = 0; i < password.length; i++) {
+				var a = (password.charCodeAt(i) + key) % 255
+				newpass += String.fromCharCode(a)
+			}
+			return newpass
+		}
 
 		const user = {
 			name: this.state.name,
@@ -35,7 +55,7 @@ export default class Login extends React.Component {
 			mobileNumber: this.state.mobileNumber,
 			address: this.state.address,
 			emailID: this.state.emailID,
-			password: this.state.password,
+			password: encryptPassword(this.state.password, 3),
 			status: this.state.status
 
 		};
@@ -56,6 +76,7 @@ export default class Login extends React.Component {
 					console.log("logged in Succesfully");
 					console.log("response",response)
 					localStorage.setItem('user', response.data.id)
+					localStorage.setItem('isAuthenticated', true)
 					history.push('/dashboard')
 					// localStorage.setItem(name,this.fullname)
 					// return <Redirect to='/dashboard' />

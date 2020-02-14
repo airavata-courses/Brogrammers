@@ -16,13 +16,19 @@ class Register extends Component {
 			address: "",
 			emailID: '',
 			password: '',
-			status:''
+			retype_password: '',
+			status: ''
+
 		};
 
 		this.update = this.update.bind(this);
 
 		this.displayLogin = this.displayLogin.bind(this);
 	}
+
+
+
+
 
 	// http://localhost:8080/rest/user/register
 
@@ -39,17 +45,6 @@ class Register extends Component {
 		// axios request will go
 		console.log('You have successfully registered');
 		console.log(this.state);
-		
-		// axios.post('url/register', {this.state})
-		// .then(res => {
-		// 	if res.status == '200' {
-		// 		alert('sucess')
-		// 		redirect to login
-		// 	}
-		// })
-		// .catch(e => {
-		// 	console.log(e)
-		// })
 
 		this.setState({
 			fullname: '',
@@ -57,89 +52,111 @@ class Register extends Component {
 			password: ''
 		});
 
-		const { history } = this.props;
-		const user = {
-			name: this.state.name,
-			id: this.state.id,
-			mobileNumber:this.state.mobileNumber,
-			address:this.state.address,
-			emailID:this.state.emailID,
-			password:this.state.password,
-			status:this.state.status
-		  
-		  };
-		
-		axios.post('http://localhost:8080/rest/user/register', user, {headers: {
-			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*',
-		}})
-		  .then(function (response) {
-			 
-			  if (response.status == "200")
-			  {
-				console.log("Registered Succesfully");
-				history.push('/dashboard')
-			
+		const { history } = this.props
 
-			  }
-			console.log(response);
-		  })
-		  .catch(function (error) {
-			console.log("",error);
-			console.log("data", {user});
-		  });
+		// accept this.state.password 
+		// loop over char in string 
+		//  convert to ascii value 
+		//  (ascii value + 3) % 255
+		//  new stwing , append value into new string 
+		//  return 
+		
+		function encryptPassword(password, key) {
+			var newpass = ''
+			for (var i = 0; i < password.length; i++) {
+				var a = (password.charCodeAt(i) + key) % 255
+				newpass += String.fromCharCode(a)
+			}
+			return newpass
+		}
+		console.log(encryptPassword('abcd'))
+		if (this.state.retype_password === this.state.password && this.state.password.length > 6) {
+			
+			const user = {
+				name: this.state.name,
+				id: this.state.id,
+				mobileNumber: this.state.mobileNumber,
+				address: this.state.address,
+				emailID: this.state.emailID,
+				password: encryptPassword(this.state.password, 3),
+
+			};
+			console.log(user)
+			axios.post('http://localhost:8080/rest/user/register', user, {
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*',
+				}
+			})
+				.then(function (response) {
+
+					if (response.status == "200") {
+						console.log("Registered Succesfully");
+						history.push('/dashboard')
+
+
+					}
+					console.log(response);
+				})
+				.catch(function (error) {
+					console.log("", error);
+					console.log("data", { user });
+				});
+		} else {
+			alert('Passwords do not match or length is not apppropriate')
+		}
 	}
 
-	
+
 
 	render() {
 		return (
 			<div className="bg-img1">
-			<div className="container text-center">
-			<div className="register">
-				<form onSubmit={this.displayLogin}>
-					<h2>Register</h2>
+				<div className="container text-center">
+					<div className="register">
+						<form onSubmit={this.displayLogin}>
+							<h2>Register</h2>
 
-					<div className="name">
-						<input
-							type="text"
-							placeholder="Full Name"
-							name="fullname"
-							value={this.state.fullname}
-							onChange={this.update}
-						/>
+							<div className="name">
+								<input
+									type="text"
+									placeholder="Full Name"
+									name="fullname"
+									value={this.state.fullname}
+									onChange={this.update}
+								/>
+							</div>
+
+							<div className="email">
+								<input
+									type="text"
+									placeholder="Enter your email"
+									name="email"
+									value={this.state.email}
+									onChange={this.update}
+								/>
+							</div>
+
+							<div className="pasword">
+								<input
+									type="password"
+									placeholder="Password"
+									name="password"
+									value={this.state.password}
+									onChange={this.update}
+								/>
+							</div>
+
+							<div className="password">
+								<input type="password" placeholder="Confirm Password" name="retype_password" />
+							</div>
+
+							<input type="submit" value="Login" />
+						</form>
+
+						<h5>Already have an Account?	<Link to="/login">Login Here</Link></h5>
 					</div>
-
-					<div className="email">
-						<input
-							type="text"
-							placeholder="Enter your email"
-							name="email"
-							value={this.state.email}
-							onChange={this.update}
-						/>
-					</div>
-
-					<div className="pasword">
-						<input
-							type="password"
-							placeholder="Password"
-							name="password"
-							value={this.state.password}
-							onChange={this.update}
-						/>
-					</div>
-
-					<div className="password">
-						<input type="password" placeholder="Confirm Password" name="password1" />
-					</div>
-
-					<input type="submit" value="Login" />
-				</form>
-
-		<h5>Already have an Account?	<Link to="/login">Login Here</Link></h5>	
-			</div>
-			</div>
+				</div>
 			</div>
 		);
 	}

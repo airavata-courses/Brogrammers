@@ -23,6 +23,8 @@ class App extends Component {
         <Route path="/forms" component={Forms} />
         <Route path="/usersessions" component={UserSessions} />
         <Route path="/dashboard" component={Dashboard} />
+        {/* {localStorage.getItem('isAuthenticated') == true ? <Route exact path="/" component={FrontPage} /> : alert('Unauthorized access. Please login')} */}
+
       </div>
     );
   }

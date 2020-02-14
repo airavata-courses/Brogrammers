@@ -1,4 +1,3 @@
-
 import React, { Component} from 'react';
 import "../style/dashboard.css";
 import Navbar from "./Navbar.js";
@@ -81,7 +80,6 @@ export default class dashboard extends Component {
           {/* <div class="">
   <button class="btn btn btn-outline-secondary dropdown-toggle" >  <Redirect to ="/forms"/>Extract
   <span class="caret"></span></button>
-
 </div> */}
 </center>
         </div>

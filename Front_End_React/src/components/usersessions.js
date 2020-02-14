@@ -38,12 +38,12 @@ export default class usersessions extends Component {
       <div>
         <Navbar></Navbar>
         <h1 style={{ fontSize: "50px", textAlign: "center" }}>Activity</h1>
-        <div class="container2">
-          <div class="row">
+        <div className="container2">
+          <div className="row">
 
-            <div class="col-xs-12">
-              <div class="table-responsive">
-                <table summary="This table shows how to create responsive tables using Bootstrap's default functionality" class="table table-bordered table-hover">
+            <div className="col-xs-12">
+              <div className="table-responsive">
+                <table summary="This table shows how to create responsive tables using Bootstrap's default functionality" className="table table-bordered table-hover">
                   <caption>Users Management of Activity
          </caption>
                   <thead>
@@ -64,7 +64,7 @@ export default class usersessions extends Component {
                         <td>{activity.session.description}</td>
                        {/* <td>
                        <button
-                        className="btn btn-info"
+                        classNameName="btn btn-info"
                           style={{
                           
                             backgroundColor:"lightBlue",
