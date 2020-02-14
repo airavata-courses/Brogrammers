@@ -1,0 +1,135 @@
+.nav-tabs {
+    margin-bottom: 15px;
+  }
+  
+  .sign-with {
+    margin-top: 25px;
+    padding: 20px;
+  }
+  
+
+  div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+  }
+
+  .nav.navbar-expand.navbar-light.bg-light {
+	padding: 30px;
+	}
+
+
+
+.pad-btn {
+	padding-bottom: 50px;
+}
+
+.pad-top {
+	padding-top: 50px;
+}
+
+.footer {
+	padding: 50px 0px;
+}
+
+
+.section {
+	padding: 100px 0px;
+}
+
+
+
+
+.underline {
+	text-decoration: underline;
+}
+
+.top-bottom {
+	padding: 25px 25px;
+}
+
+
+
+#wrapper {
+  width: 100%;
+}
+
+#content {
+  min-height: 385px;
+  position: inherit;
+  margin: 0 0 0 250px;
+  padding: 5px;
+  border-left: 1px solid #e7e7e7;
+  background-color: #fff;
+}
+#content .card {
+  margin-bottom: 5px;
+}
+
+.navbar {
+  background-color: #f8f8f8;
+  z-index: 1000;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar {
+  z-index: 1;
+  position: absolute;
+  width: 250px;
+  top: 57px;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f8f8f8;
+}
+.sidebar .nav .nav-item {
+  border-bottom: 1px solid #e7e7e7;
+  position: relative;
+  display: block;
+}
+.sidebar .nav .nav-item a {
+  position: relative;
+  color: #C2C2C2;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+.sidebar .nav .nav-item a .arrow {
+  float: right;
+  margin-top: 4px;
+}
+.sidebar .nav .nav-item a .arrow:before {
+  content: "\f104";
+}
+.sidebar .nav .nav-item a.active, .sidebar .nav .nav-item a:focus, .sidebar .nav .nav-item a:hover {
+  text-decoration: none;
+
+  color: #eee;
+}
+.sidebar .nav .nav-item a.active .arrow:before {
+  content: "\f107";
+}
+.sidebar .nav-second-level {
+  padding: 0;
+}
+.sidebar .nav-second-level .nav-item {
+  border-bottom: none !important;
+}
+.sidebar .nav-second-level .nav-item a {
+  padding: 5px 5px 5px 40px;
+}
+.sidebar .sidebar-search {
+  padding: 15px;
+}
+
