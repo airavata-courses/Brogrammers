@@ -57,7 +57,7 @@ export default class dashboard extends Component {
       </div>
 
       <div id="content">
-      <ul class="nav nav-tabs">
+      {/* <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link active" href="#">Active</a>
         </li>
@@ -70,7 +70,7 @@ export default class dashboard extends Component {
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
-      </ul>
+      </ul> */}
       <div class="card">
         <div class="card-block">
           {/* <h4 class="card-title" style={{textAlign:"center"}}>Data Download</h4>

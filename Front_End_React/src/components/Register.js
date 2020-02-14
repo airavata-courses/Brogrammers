@@ -60,16 +60,16 @@ class Register extends Component {
 		//  (ascii value + 3) % 255
 		//  new stwing , append value into new string 
 		//  return 
-		
+
 		function encryptPassword(password, key) {
 			var newpass = ''
 			for (var i = 0; i < password.length; i++) {
-				var a = (password.charCodeAt(i) + key) % 255
+				var a = (password.charCodeAt(i) + 3) % 255
 				newpass += String.fromCharCode(a)
 			}
 			return newpass
 		}
-		console.log(encryptPassword('abcd'))
+		console.log(encryptPassword('abcdef'))
 		if (this.state.retype_password === this.state.password && this.state.password.length > 6) {
 			
 			const user = {
