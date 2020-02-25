@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import pika
 import json
-import matplotlib.pyplot as plt
 import pyart
 import numpy as np
 import io
