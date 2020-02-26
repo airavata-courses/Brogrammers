@@ -37,7 +37,7 @@ export default class dashboard extends Component {
             <Link to ="/forms">Reflectivity Data </Link>
             </li>
             
-            <li class="nav-item ">
+            {/* <li class="nav-item ">
               <a data-toggle="collapse" href="#secondLevel" aria-expanded="false" aria-controls="collapseExample">
               <Link to ="/usersession">User Info</Link>
               </a>
@@ -50,7 +50,7 @@ export default class dashboard extends Component {
                 </li>
               </ul>
              
-            </li>
+            </li> */}
           </ul>
         </div>
   

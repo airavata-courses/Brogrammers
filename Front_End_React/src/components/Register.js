@@ -60,16 +60,16 @@ class Register extends Component {
 		//  (ascii value + 3) % 255
 		//  new stwing , append value into new string 
 		//  return 
-
-		function encryptPassword(password, key) {
-			var newpass = ''
-			for (var i = 0; i < password.length; i++) {
-				var a = (password.charCodeAt(i) + 3) % 255
-				newpass += String.fromCharCode(a)
-			}
-			return newpass
-		}
-		console.log(encryptPassword('abcdef'))
+		
+		// function encryptPassword(password, key) {
+		// 	var newpass = ''
+		// 	for (var i = 0; i < password.length; i++) {
+		// 		var a = (password.charCodeAt(i) + key) % 255
+		// 		newpass += String.fromCharCode(a)
+		// 	}
+		// 	return newpass
+		// }
+		// console.log(encryptPassword('abcd'))
 		if (this.state.retype_password === this.state.password && this.state.password.length > 6) {
 			
 			const user = {
@@ -78,7 +78,8 @@ class Register extends Component {
 				mobileNumber: this.state.mobileNumber,
 				address: this.state.address,
 				emailID: this.state.emailID,
-				password: encryptPassword(this.state.password, 3),
+				password:this.state.password,
+				// password: encryptPassword(this.state.password, 3),
 
 			};
 			console.log(user)
