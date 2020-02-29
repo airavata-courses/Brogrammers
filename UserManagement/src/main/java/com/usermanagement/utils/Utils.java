@@ -23,4 +23,36 @@ public class Utils {
 	    ObjectInputStream is = new ObjectInputStream(in);
 	    return is.readObject();
 	}
+	
+	
+	public String decryptpassFromGateway(String password, int gatewayUISecurityKey) {
+
+		if(null != password) {
+			
+			StringBuilder decrypted = new StringBuilder();
+			for(int i = 0 ; i <password.length(); i++) {
+				
+				int asc = (int)password.charAt(i) - gatewayUISecurityKey;
+				decrypted.append((char)asc);
+			}
+			return decrypted.toString();
+		}else {
+			return "Encryption Failed";
+		}
+	}
+
+	public String encryptpassForUserM(String password, int userGatewaySecurityKey) {
+
+		if(null != password) {
+			
+			StringBuilder encrypted = new StringBuilder();
+			for(int i = 0 ; i <password.length(); i++) {
+				int asc = (int)password.charAt(i) + userGatewaySecurityKey;
+				encrypted.append((char)asc);
+			}
+			return encrypted.toString();
+		}else {
+			return "Encryption Failed";
+		}
+	}
 }
