@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(cors())
 app.use(session({secret: "Shh, its a secret!"}));
 
-mongoose.connect('mongodb://localhost:27017/sessionManagement', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://admin:<bro123>@cluster1-27uee.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 
 app.get('/', function(req, res){
