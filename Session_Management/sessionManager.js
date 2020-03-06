@@ -13,17 +13,25 @@ app.use(bodyParser())
 app.use(cookieParser());
 app.use(cors())
 app.use(session({secret: "Shh, its a secret!"}));
+// const option = {
+//    socketTimeoutMS: 30000,
+//    keepAlive: true,
+//    reconnectTries: 30000,
+// useNewUrlParser: true
+// };
 
-mongoose.connect('mongodb://localhost:27017/sessionManagement', {useNewUrlParser: true});
+// mongoose.connect(mongoURI, option);
+// mongoose.connect('mongodb+srv://admin:bro123@cluster1-27uee.mongodb.net/test?retryWrites=true&w=majority', );
+mongoose.connect('mongodb+srv://admin:bro123@cluster1-27uee.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 
 app.get('/', function(req, res){
    if(req.session.page_views){
       req.session.page_views++;
-      res.send("You visited this page " + req.session.page_views + " times");
+      res.send("You visited Session Management " + req.session.page_views + " times");
    } else {
       req.session.page_views = 1;
-      res.send("Welcome to this page for the first time!");
+      res.send("Inside Session Management");
    }
 });
 
