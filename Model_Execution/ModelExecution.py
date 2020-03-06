@@ -2,11 +2,9 @@
 
 import tempfile
 import pytz
-import nexradaws
 templocation = tempfile.mkdtemp()
 import pika
 import json
-import matplotlib.pyplot as plt
 
 # Consumer 
 connection = pika.BlockingConnection(
