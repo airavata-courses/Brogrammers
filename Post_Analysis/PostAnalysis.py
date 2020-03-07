@@ -8,11 +8,16 @@ import boto.s3
 from boto.s3.key import Key
 from datetime import datetime
 
+import time
 
+time.sleep( 50 )
 
-# Consumer
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost'))
+# establishing connection to RabbitMQ server
+credentials = pika.PlainCredentials(username='guest', password='guest')
+connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host = 'rabbit' , port=5672, credentials=credentials))
+
+print ("Connection Established")
 channel = connection.channel()
 
 channel.queue_declare(queue='post-analysis-reflectivity')

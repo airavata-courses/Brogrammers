@@ -6,12 +6,18 @@ templocation = tempfile.mkdtemp()
 import pika
 import json
 
-# Consumer 
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost'))
-channel = connection.channel()
-channel.queue_declare(queue='model-execution')
+import time
+
+time.sleep( 50 )
+
+# establishing connection to RabbitMQ server
+credentials = pika.PlainCredentials(username='guest', password='guest')
+connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host = 'rabbit' , port=5672, credentials=credentials))
  
+print ("Connection Established")
+
+channel = connection.channel()
  # Publisher 
 channel.queue_declare(queue='post-analysis-reflectivity')
 data_send = []

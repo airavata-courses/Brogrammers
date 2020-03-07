@@ -2,20 +2,26 @@
 # Access data 
 import json
 import pika
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import tempfile
 import pytz
 from datetime import datetime
-import pyart
+#import pyart
 import nexradaws
 templocation = tempfile.mkdtemp()
-
+import time
 
 conn = nexradaws.NexradAwsInterface()
 
-# consumer queue
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost'))
+
+time.sleep( 50 )
+
+# establishing connection to RabbitMQ server
+credentials = pika.PlainCredentials(username='guest', password='guest')
+connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host = 'rabbit' , port=5672, credentials=credentials))
+
+print ("Connection Established")
 channel = connection.channel()
 
 channel.queue_declare(queue='data-retrieval-reflectivity')

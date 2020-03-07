@@ -22,7 +22,11 @@ public class DataRetrieveHandler {
 
 	public String sendInputForReflectivity(UserSession userSession) throws IOException, TimeoutException {
 		ConnectionFactory factory =  new ConnectionFactory();
-
+			factory.setUsername("guest");
+			factory.setPassword("guest");
+			factory.setVirtualHost("/");
+			factory.setHost("rabbit");
+			factory.setPort(5672);
 		Connection conn= factory.newConnection();
 
 		Channel ch=  conn.createChannel();

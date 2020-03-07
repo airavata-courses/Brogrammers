@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+
+    # RabbitMQ
+    rabbit:
+        hostname: rabbit
+        image: rabbitmq
+        ports:
+        - "5674:5672"  # we forward this port because it's useful for debugging
+        - "15674:15672"  # here, we can access rabbitmq management plugin
+
+    front_end_react:
+        build: "./Front_End_React"
+        ports:
+        - "3000:3000"
+       
+    gateway_api:
+        build: "./Gateway"
+        ports:
+        - "8080:8080"
+        depends_on:
+         - rabbit
+    
+    user_management:
+        build: "./UserManagement"
+        ports:
+        - "8090:8090"
+    
+    session_management:
+        build: "./Session_Management"
+        ports:
+        - "4001:4001"
+        
+        
+    data_retrieval:
+        build: "./Data_Retrieval"
+        ports:
+        - "9002:9002"
+        depends_on:
+        - rabbit
+
+    post_analysis:
+        build: "./Post_Analysis"
+        ports:
+        - "9003:9003"
+        depends_on:
+        - rabbit
+
+    model_execution:
+        build: "./Model_Execution"
+        ports:
+        - "9004:9004"
+        depends_on:
+        - rabbit
