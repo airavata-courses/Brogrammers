@@ -4,31 +4,24 @@ import json
 import pyart
 import numpy as np
 import io
-import boto.s3
-from boto.s3.key import Key
+#import boto.s3
+#from boto.s3.key import Key
 from datetime import datetime
+import os
+import base64
 
-import time
 
-time.sleep( 50 )
-
-# establishing connection to RabbitMQ server
-credentials = pika.PlainCredentials(username='guest', password='guest')
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host = 'rabbit' , port=5672, credentials=credentials))
-
-print ("Connection Established")
+# Consumer
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
 
 channel.queue_declare(queue='post-analysis-reflectivity')
 
 # Producer
-channel.queue_declare(queue='post-analysis-reflectivity-gateway')
+channel.queue_declare(queue='post-analysis-reflectivity-gateway',durable =True)
 
 
-# Put in your secret access key and access key id here
-AWS_ACCESS_KEY_ID = 'AKIAJNUHLYRIDAUSNBIQ'
-AWS_SECRET_ACCESS_KEY = 'jsQoBrZix46wed4pE+Rrs0OF7Rpieg/K70DDrXzZ'
 
 def callback(ch, method, properties, body):   
     result = json.loads(body)
@@ -43,22 +36,18 @@ def callback(ch, method, properties, body):
         display = pyart.graph.RadarDisplay(radar)
         display.plot('reflectivity', 0, ax=ax, title='NEXRAD')
         display.set_limits((-150, 150), (-150, 150), ax=ax)
+        datetimeStr= datetime.now().strftime("%Y%m%d%H%M%S")
         img_data = io.BytesIO()
-        plt.savefig(img_data, format='png')
+        plt.savefig(os.getcwd() + "/" + "Plots" + "/" + str(datetimeStr)+".png")
         img_data.seek(0)
-        conn = boto.s3.connect_to_region('us-east-2',
-        aws_access_key_id=AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY
-        )
-        bucket = conn.get_bucket('ads-plots')
-        k = Key(bucket)
-        k.key = 'ads_plots_'+str(datetime.now().strftime("%Y%m%d%H%M%S"))
-        url = 'https://ads-plots.s3.us-east-2.amazonaws.com/'+'ads_plots_'+str(datetime.now().strftime("%Y%m%d%H%M%S")) 
-        k.set_contents_from_file(img_data)
-        k.set_acl('public-read')
+       
+        file= (os.getcwd() + "/" + "Plots" + "/" + str(datetimeStr) +".png")
+        with open(file, "rb") as img:
+            imgString = base64.b64encode(img.read())
+            print(imgString)
+            ApiPayload = {"radar_img":str(imgString.decode("utf-8"))}
         print("Publishing to gateway")
-        print("Plot url : ",json.dumps(url))
-        channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=url)
+        channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=json.dumps(ApiPayload))
        
         
 channel.basic_consume(queue='post-analysis-reflectivity', on_message_callback=callback, auto_ack=True)
