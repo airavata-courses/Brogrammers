@@ -1,5 +1,65 @@
 pipeline {
+    agent any
+     tools {nodejs "InstanceNodeJS"}
     stages {
+        stage('Build Application') {
+            steps {
+                sh 'mvn -f Gateway/pom.xml clean package'
+            }
+            post {
+                success {
+                    echo ""
+                    archiveArtifacts artifacts: '**/*.jar'
+                }
+            }
+        }
+        es {
+        stage('Build Application') {
+            steps {
+                sh 'mvn -f UserManagement/pom.xml clean package'
+            }
+            post {
+                success {
+                    echo ""
+                    archiveArtifacts artifacts: '**/*.jar'
+                }
+            }
+        }
+        stage('Install dependencies for Node') {
+            steps {
+                dir('Session_Management/') {
+                       checkout scm
+                       sh 'npm install'
+                }
+                
+            }
+        }
+        stage('build Python Dependencies') {
+            steps {
+                   dir('Data_Retrieval/') {
+                       checkout scm
+                 sh 'pip install -r Data_Retrieval/requirements.txt'
+                  }
+            }
+        }  
+        stage('build Python Dependencies') {
+            steps {
+                   dir('Model_Execution/') {
+                       checkout scm
+                 sh 'pip install -r Model_Execution/requirements.txt'
+                  }
+            }
+        }
+        
+        stage('build Python Dependencies') {
+            steps {
+                   dir('Data_Retrieval/') {
+                       checkout scm
+                 sh 'pip install -r Data_Retrieval/requirements.txt'
+                  }
+            }
+        }
+
         stage('Building Docker image') {
             steps {
                   checkout scm
