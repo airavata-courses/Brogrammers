@@ -14,7 +14,6 @@ pipeline {
                 }
             }
         }
-        es {
         stage('Build Application') {
             steps {
                 sh 'mvn -f UserManagement/pom.xml clean package'
