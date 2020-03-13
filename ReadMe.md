@@ -3,7 +3,7 @@
 
 ## Getting Started
 
-For Initial deployment please visit [Dropwizard](https://github.com/airavata-courses/Brogrammers/wiki/Assignment-1) 
+For Initial deployment please visit [Link](https://github.com/airavata-courses/Brogrammers/wiki/Assignment-1) 
 	
 ## Contributing
 
