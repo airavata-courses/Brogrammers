@@ -1,10 +1,7 @@
 pipeline {
-<<<<<<< HEAD
-    agent any
-     tools {nodejs "InstanceNodeJS"}
-=======
+
     agents any
->>>>>>> f5cfd5463e787bd4e38ab5b44f545c2ef6744420
+
     stages {
         stage('Build Application') {
             steps {
