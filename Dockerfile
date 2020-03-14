@@ -2,10 +2,10 @@
 # Build stage
 #
 FROM maven:3.6.3-jdk-13
-WORKDIR UserManagement
+WORKDIR /code
 
-#ADD pom.xml /code/pom.xml
-#ADD src /code/src
+ADD pom.xml /code/pom.xml
+ADD src /code/src
 RUN ["mvn","clean"] 
 RUN ["mvn","install"] 
 
