@@ -7,7 +7,7 @@ node{
        
     }
     stage('Build Docker Image'){
-       	cd "/Dockerized-Front-End/Front_End"	
+      sh "cd microservices/Microservice_Session Management" 		
          sh "docker build -t arjunbh/front-end:1.0.0 ."
     }
    
