@@ -7,7 +7,7 @@ node{
        
     }
     stage('Build Docker Image'){
-       
+       	cd "/Dockerized-Front-End/Front_End"	
          sh "docker build -t arjunbh/front-end:1.0.0 ."
     }
    
