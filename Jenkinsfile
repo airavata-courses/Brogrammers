@@ -7,8 +7,8 @@ node{
        
     }
     stage('Build Docker Image'){
-      sh "cd Front_End" 		
-         sh "docker build -t arjunbh/front-end:1.0.0 ."
+      		
+         sh "docker build -t arjunbh/front-end:1.0.0 /Front_End/."
     }
    
     stage('Push Docker Image'){
