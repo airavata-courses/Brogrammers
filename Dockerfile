@@ -1,5 +1,5 @@
 FROM python:3
-
+RUN cd Model_Execution
 ADD ModelExecution.py /
 #RUN pip3 install cdnumpy 
 RUN pip3 install pika
