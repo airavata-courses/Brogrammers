@@ -8,7 +8,7 @@ node{
     }
     stage('Build Docker Image'){
       		
-         sh "docker build -t arjunbh/Session-Management:1.0.0 ."
+         sh "docker build -t arjunbh/session-management:1.0.0 ."
     }
    
     stage('Push Docker Image'){
@@ -17,7 +17,7 @@ node{
        
        
 }
-  sh "docker push arjunbh/Session-Management:1.0.0"
+  sh "docker push arjunbh/session-management:1.0.0"
      
     }
    
