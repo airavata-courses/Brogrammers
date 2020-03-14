@@ -4,8 +4,8 @@
 FROM maven:3.6.3-jdk-13
 WORKDIR /code
 
-ADD pom.xml /code/pom.xml
-ADD src /code/src
+ADD UserManagement/pom.xml /code/pom.xml
+ADD UserManagement/src /code/src
 RUN ["mvn","clean"] 
 RUN ["mvn","install"] 
 
