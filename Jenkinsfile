@@ -21,7 +21,7 @@ node{
         stage('SSH to Kubernetes master') {
             steps {
             sh '''
-                cd "/Microservice_Data Retrieval" 
+                cd "/Dockerized-Gateway-API" 
                 chmod 400 brogrammers.pem
                 ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.169.31 uptime
                 ssh -i brogrammers.pem ubuntu@149.165.169.31 " rm -rf Brogrammers &&
