@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: post_analysis
+spec:
+ type: LoadBalancer
+ ports:
+  - targetPort: 9020
+    port: 9020
+    nodePort: 30070
+ selector:
+  app: app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post_analysis
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: post_analysis
+        imagePullPolicy: Always
+        image: arjunbh/post_analysis:1.0.0
+        ports:
+        - containerPort: 9020
+      restartPolicy: Always
