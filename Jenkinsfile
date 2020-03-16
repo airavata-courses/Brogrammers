@@ -23,8 +23,8 @@ node{
             sh '''
                 cd "/Dockerized-Gateway-API" 
                 chmod 400 brogrammers.pem
-                ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.169.31 uptime
-                ssh -i brogrammers.pem ubuntu@149.165.169.31 " rm -rf Brogrammers &&
+                ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
+                ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
                 git clone https://github.com/airavata-courses/Brogrammers.git &&
                 cd Brogrammers &&
                 git pull &&
