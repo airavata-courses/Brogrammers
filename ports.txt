@@ -1,0 +1,7 @@
+Front End - 3000
+Gateway - 8085
+User Management - 8090
+Session Management - 4001
+RabbitMQ - 5672/15672
+
+
