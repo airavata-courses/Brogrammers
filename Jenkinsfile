@@ -14,8 +14,8 @@ node{
     }
    
     stage('Push Docker Image'){
-      
-     sh "sudo docker login -u arjunbh --password-stdin=brogrammers "
+   
+     sh "sudo docker login --username=arjunbh --password-stdin=brogrammers "
        
        
 
