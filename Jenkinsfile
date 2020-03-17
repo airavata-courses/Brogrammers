@@ -19,7 +19,6 @@ node{
     }
      stage('SSH to Kubernetes master') {
             sh '''
-                cd "/Dockerized-Session-Management" 
                 chmod 400 brogrammers.pem
                 ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
                 ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
