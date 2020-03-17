@@ -1,7 +1,6 @@
-node{
-        stage("SCM Checkout"){
-            git branch: 'Dockerized-Gateway-API', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
-        }
+pipeline {
+    agent any
+    stages {
         stage('Mvn Package'){
             sh '''
                 apt --assume-yes install maven
@@ -41,4 +40,5 @@ node{
                 kubectl apply -f config.yaml"
             '''    
         }
+      }
 }
