@@ -4,7 +4,7 @@ node{
     }
      stage('Installing docker and building image') {
             sh '''
-                cd "Dockerized-Session-Management"
+                cd "session-management"
                 sudo apt --assume-yes install docker.io
                 sudo systemctl start docker
                 sudo systemctl enable docker 
