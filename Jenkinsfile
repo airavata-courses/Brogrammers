@@ -9,17 +9,21 @@ pipeline {
                 def mvnCMD = "${mvnHome}/bin/mvn"
                 sh "${mvnCMD} clean package"
             }
-            stage('Build Docker Image'){
-                sh "docker build -t arjunbh/gateway-api:1.0.0 ."
+            stage('Installing Docker and building image') {
+                sh '''
+                    cd "Dockerized-Gateway-API"
+                    sudo apt --assume-yes install docker.io
+                    sudo systemctl start docker
+                    sudo systemctl enable docker 
+                    sudo docker build -t arjunbh/gateway-api .
+                '''    
             }
-        
             stage('Push Docker Image'){
                 withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
-                sh "docker login -u arjunbh -p brogrammers "  
+                sh "sudo docker login -u arjunbh -p brogrammers"  
                 }
-                sh "docker push arjunbh/gateway-api:1.0.0"
+                sh "sudo docker push arjunbh/gateway-api"
             }
-
             stage('SSH to Kubernetes master') {
                 sh '''
                     cd "/Dockerized-Gateway-API" 
@@ -37,5 +41,6 @@ pipeline {
                     kubectl apply -f config.yaml"
                 '''    
             }
+    }
    
 }
