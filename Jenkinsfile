@@ -4,7 +4,7 @@ node{
         }
         stage('Mvn Package'){
             sh '''
-                sudo apt --assume-yes install maven
+                apt --assume-yes install maven
                 mvn pre-clean
                 mvn compile
                 mvn package
@@ -12,18 +12,17 @@ node{
         }
         stage('Installing Docker and building image') {
             sh '''
-                cd "Dockerized-Gateway-API"
-                sudo apt --assume-yes install docker.io
-                sudo systemctl start docker
-                sudo systemctl enable docker 
-                sudo docker build -t arjunbh/gateway-api .
+                apt --assume-yes install docker.io
+                systemctl start docker
+                systemctl enable docker 
+                docker build -t arjunbh/gateway-api .
             '''    
         }
         stage('Push Docker Image'){
             withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
-            sh "sudo docker login -u arjunbh -p brogrammers"  
+            sh "docker login -u arjunbh -p brogrammers"  
             }
-            sh "sudo docker push arjunbh/gateway-api"
+            sh "docker push arjunbh/gateway-api"
         }
         stage('SSH to Kubernetes master') {
             sh '''
