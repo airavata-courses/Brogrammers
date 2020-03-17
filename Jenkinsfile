@@ -29,7 +29,7 @@ node{
                 cd Brogrammers &&
                 git pull &&
                 git checkout Kubernetes &&
-                cd yaml/Gateway && 
+                cd gateway-api && 
                 export KUBECONFIG=/etc/kubernetes/admin.conf
                 kubectl delete service &&
                 kubectl delete deployment gateway-api &&
