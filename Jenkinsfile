@@ -4,10 +4,11 @@ pipeline {
         stage('Installing dependencies') {
             steps {                 
                 sh '''
-                    apt --assume-yes install maven
-                    mvn pre-clean
-                    mvn compile
-                    mvn package
+                    sudo apt --assume-yes install maven
+                    Sudo mvn pre-clean
+                    Sudo mvn compile
+                    Sudo mvn package
+                    echo "Maven Build Successful"
                 '''
              }
         }
