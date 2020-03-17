@@ -11,9 +11,7 @@ node{
             '''    
      } 
     stage('Push Docker Image'){
-        withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
-        sh "sudo docker login -u arjunbh -p brogrammers "        
-        }
+        sh "sudo docker login -u arjunbh -p brogrammers"       
         sh "sudo docker push arjunbh/session-management" 
     }
      stage('SSH to Kubernetes master') {
