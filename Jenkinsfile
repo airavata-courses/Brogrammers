@@ -4,7 +4,7 @@ node{
     }
      stage('Installing docker and building image') {
             sh '''
-                sudo apt --assume-yes install docker.io
+                sudo apt -t --assume-yes install docker.io
                 sudo systemctl start docker
                 sudo systemctl enable docker 
                 sudo docker build -t arjunbh/session-management .
