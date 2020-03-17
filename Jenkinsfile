@@ -13,7 +13,7 @@ node{
     stage('Push Docker Image'){
         sh '''
             sudo docker login --username=arjunbh --password=brogrammers &&
-            sudo apt-get update && 
+            sudo apt-get upgrade -y &&
             sudo docker push arjunbh/session-management
         '''
     }
