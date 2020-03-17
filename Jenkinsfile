@@ -14,12 +14,12 @@ node{
     }
    
     stage('Push Docker Image'){
-   
-     sh "sudo docker login --username=arjunbh --password=brogrammers"
+        withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubPwd'')]) {
+     sh "sudo docker login -u arjunbh -p brogrammers "
        
        
-
-  sh " sudo docker push arjunbh/model-execution:1.0.0"
+}
+  sh " sudodocker push arjunbh/model-execution:1.0.0"
      
     }
    
