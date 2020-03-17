@@ -11,8 +11,11 @@ node{
             '''    
      } 
     stage('Push Docker Image'){
-        sh "sudo docker login -u arjunbh -p brogrammers"       
-        sh "sudo docker push arjunbh/session-management" 
+        sh '''
+            sudo docker login --username=arjunbh --password=brogrammers   
+            sudo docker tag session-management arjunbh/session-management    
+            sudo docker push arjunbh/session-management
+        '''
     }
      stage('SSH to Kubernetes master') {
             sh '''
