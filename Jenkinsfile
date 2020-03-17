@@ -10,7 +10,7 @@ node{
       	
         sh "sudo systemctl start docker"
         sh "sudo systemctl enable docker"   	
-        sh "docker build -t arjunbh/model-execution:1.0.0 ."
+        sh "sudo docker build -t arjunbh/model-execution:1.0.0 ."
     }
    
     stage('Push Docker Image'){
