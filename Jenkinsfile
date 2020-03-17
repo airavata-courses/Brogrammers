@@ -3,9 +3,10 @@ node{
             git branch: 'Dockerized-Gateway-API', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
         }
         stage('Mvn Package'){
-            def mvnHome= tool name: 'maven-3', type: 'maven'
-            def mvnCMD = "${mvnHome}/bin/mvn"
-            sh "${mvnCMD} clean package"
+            sudo apt --assume-yes install maven
+            mvn pre-clean
+            mvn compile
+            mvn package
         }
         stage('Installing Docker and building image') {
             sh '''
