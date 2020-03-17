@@ -2,7 +2,7 @@ node{
     stage("SCM Checkout"){
         git branch: 'Dockerized-Session-Management', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
     }
-     stage('Installing Docker and building image') {
+     stage('Installing docker and building image') {
             sh '''
                 cd "Dockerized-Session-Management"
                 sudo apt --assume-yes install docker.io
@@ -13,9 +13,9 @@ node{
      } 
     stage('Push Docker Image'){
         withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
-        sh "docker login -u arjunbh -p brogrammers "        
+        sh "sudo docker login -u arjunbh -p brogrammers "        
         }
-        sh "docker push arjunbh/session-management" 
+        sh "sudo docker push arjunbh/session-management" 
     }
      stage('SSH to Kubernetes master') {
             sh '''
