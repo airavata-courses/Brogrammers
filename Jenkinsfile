@@ -5,9 +5,9 @@ pipeline {
             steps {                 
                 sh '''
                     sudo apt --assume-yes install maven
-                    Sudo mvn pre-clean
-                    Sudo mvn compile
-                    Sudo mvn package
+                    mvn pre-clean
+                    mvn compile
+                    mvn package
                     echo "Maven Build Successful"
                 '''
              }
