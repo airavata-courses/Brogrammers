@@ -13,7 +13,6 @@ node{
     stage('Push Docker Image'){
         sh '''
             sudo docker login --username=arjunbh --password=brogrammers   
-            sudo docker tag session-management arjunbh/session-management    
             sudo docker push arjunbh/session-management
         '''
     }
