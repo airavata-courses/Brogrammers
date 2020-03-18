@@ -20,6 +20,9 @@ pipeline {
                     sudo apt --assume-yes install docker.io
                     sudo systemctl start docker
                     sudo systemctl enable docker 
+                    
+                    kubectl delete service usermanagement &&
+                    kubectl delete deployment usermanangement &&
                     sudo docker build -t arjunbh/user-manangement:1.0.0 .
                 '''    
             }
