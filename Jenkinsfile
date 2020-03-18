@@ -8,16 +8,13 @@ node{
     }
     stage('Build Docker Image'){
       		
-         sh "docker build -t arjunbh/data-retrieval:1.0.0 ."
+         sh "docker build -t arjunbh/data-retrieval ."
     }
    
     stage('Push Docker Image'){
-        withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
+        
      sh "docker login -u arjunbh -p brogrammers "
-       
-       
-}
-  sh "docker push arjunbh/data-retrieval:1.0.0"
+     sh "docker push arjunbh/data-retrieval"
      
     }
    
