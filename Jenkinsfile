@@ -48,9 +48,7 @@ pipeline {
                     git pull &&
                     git checkout Kubernetes &&
                     cd user_management && 
-                    
-                    kubectl delete service usermanagement &&
-                    kubectl delete deployment usermanagement &&
+                 
                     kubectl apply -f config.yaml"
                 '''   
             } 
