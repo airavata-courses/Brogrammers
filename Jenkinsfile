@@ -34,7 +34,7 @@ stage('SSH to Kubernetes master') {
                 git pull &&
                 git checkout Kubernetes &&
                 cd front_End &&
-                kubectl delete deployment frontend &&
+                
                 sudo kubectl apply -f config.yaml"
             '''    
         }
