@@ -21,8 +21,6 @@ pipeline {
                     sudo systemctl start docker
                     sudo systemctl enable docker 
                     
-                    kubectl delete service usermanagement &&
-                    kubectl delete deployment usermanangement &&
                     sudo docker build -t arjunbh/user-manangement:1.0.0 .
                 '''    
             }
@@ -51,6 +49,8 @@ pipeline {
                     git checkout Kubernetes &&
                     cd user_management && 
                     
+                    kubectl delete service usermanagement &&
+                    kubectl delete deployment usermanangement &&
                     kubectl apply -f config.yaml"
                 '''   
             } 
