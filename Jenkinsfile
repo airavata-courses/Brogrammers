@@ -28,9 +28,10 @@ pipeline {
         stage('Push Docker Image'){
             steps{
                 withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
-                sh "docker login -u arjunbh -p brogrammers "
-                }
-                sh "docker push arjunbh/user-manangement:1.0.0"
+                    sh "sudo docker login -u arjunbh -p brogrammers"  
+                    }
+                    sh "docker push arjunbh/user-manangement"
+            
             }        
         }
 
