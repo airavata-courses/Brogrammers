@@ -26,8 +26,7 @@ node{
                 cd Brogrammers &&
                 git pull &&
                 git checkout Kubernetes &&
-                cd session_management && 
-                export KUBECONFIG=/etc/kubernetes/admin.conf
+                cd session_management &&
                 kubectl delete service &&
                 kubectl delete deployment session-management &&
                 kubectl apply -f config.yaml"
