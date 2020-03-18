@@ -27,8 +27,7 @@ node{
             git pull &&
             git checkout Kubernetes &&
             cd model_execution &&
-            kubectl delete service modelexecution &&
-            kubectl delete deployment modelexecution &&
+            
             sudo kubectl apply -f config.yaml"
         '''    
         }
