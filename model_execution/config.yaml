@@ -21,7 +21,7 @@ spec:
       app: app
   replicas: 2
   template:
-        imagePullPolicy: Always
+    imagePullPolicy: Always
     metadata:
       labels:
         app: app
