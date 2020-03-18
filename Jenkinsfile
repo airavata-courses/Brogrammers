@@ -23,7 +23,7 @@ node{
             sh '''
                 chmod 400 brogrammers.pem
                 ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
-                ssh -i brogrammers.pem ubuntu@149.165.170.140  rm -rf Brogrammers &&
+                ssh -i brogrammers.pem ubuntu@149.165.170.140 " rm -rf Brogrammers &&
                 git clone https://github.com/airavata-courses/Brogrammers.git &&
                 cd Brogrammers &&
                 git pull &&
@@ -31,7 +31,7 @@ node{
                 cd post_analysis &&
                 kubectl delete service postanalysis &&
                 kubectl delete deployment postanalysis &&
-                sudo kubectl apply -f config.yaml
+                sudo kubectl apply -f config.yaml"
                 
             '''    
         }
