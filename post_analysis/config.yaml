@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: post_analysis
+  name: postanalysis
 spec:
  type: LoadBalancer
  ports:
@@ -14,7 +14,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: post_analysis
+  name: postanalysis
 spec:
   selector:
     matchLabels:
@@ -26,9 +26,9 @@ spec:
         app: app
     spec:
       containers:
-      - name: post_analysis
+      - name: post-analysis
         imagePullPolicy: Always
-        image: arjunbh/post_analysis:1.0.0
+        image: arjunbh/post-analysis
         ports:
         - containerPort: 9020
       restartPolicy: Always
