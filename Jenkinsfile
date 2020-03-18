@@ -31,6 +31,7 @@ node{
                 kubectl delete service dataretrieval &&
                 kubectl delete deployment dataretrieval &&
                 sudo kubectl apply -f config.yaml"
+                
             '''    
         }
 
