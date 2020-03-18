@@ -39,12 +39,11 @@ pipeline {
                     ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
                     ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
                     git clone https://github.com/airavata-courses/Brogrammers.git &&
+                    
                     cd Brogrammers &&
                     git pull &&
                     git checkout Kubernetes &&
                     cd gateway_api && 
-                    sudo kubectl delete service &&
-                    sudo kubectl delete deployment gateway-api &&
                     sudo kubectl apply -f config.yaml"
                 '''    
              }
