@@ -4,6 +4,7 @@ pipeline {
         stage('Installing dependencies') {
             steps {                 
                 sh '''
+                    sudo apt-get -s upgrade | grep -P "\d\K upgraded"
                     sudo apt --assume-yes install maven
                     mvn pre-clean
                     mvn compile
