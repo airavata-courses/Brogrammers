@@ -27,7 +27,10 @@ node{
                 git pull &&
                 git checkout Kubernetes &&
                 cd session_management &&
-                export KUBECONFIG=/etc/kubernetes/admin.conf
+                mv  $HOME/.kube $HOME/.kube.bak
+                mkdir $HOME/.kube
+                sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+                sudo chown $(id -u):$(id -g) $HOME/.kube/config
                 kubectl delete service &&
                 kubectl delete deployment session-management &&
                 kubectl apply -f config.yaml"
