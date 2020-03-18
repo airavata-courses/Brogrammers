@@ -68,6 +68,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				
+				<configuration>
+				    <baseImage>java:8</baseImage>
+                		</configuration>
 			</plugin>
 		</plugins>
 		<finalName>Docker-Gateway-API</finalName>
