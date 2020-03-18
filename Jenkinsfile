@@ -30,7 +30,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
                     sh "sudo docker login -u arjunbh -p brogrammers"  
                     }
-                    sh "docker push arjunbh/user-manangement"
+                    sh "sudo docker push arjunbh/user-manangement"
             
             }        
         }
