@@ -28,6 +28,6 @@ spec:
       containers:
       - name: data-retrieval
         imagePullPolicy: Always
-        image: arjunbh/data-retrieval:1.0.0
+        image: arjunbh/data-retrieval
         ports:
         - containerPort: 9002
