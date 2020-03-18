@@ -17,19 +17,19 @@ pipeline {
         stage('Building Docker image') {
             steps {
                sh '''
-                    apt --assume-yes install docker.io
-                    systemctl start docker
-                    systemctl enable docker 
-                    docker build -t arjunbh/gateway-api .
+                    sudo apt --assume-yes install docker.io
+                    sudo systemctl start docker
+                    sudo systemctl enable docker 
+                    sudo docker build -t arjunbh/gateway-api .
                 '''    
                 }
         }
         stage('Pushing to Docker hub') {
             steps {
                 withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
-                sh "docker login -u arjunbh -p brogrammers"  
+                sh "sudo docker login -u arjunbh -p brogrammers"  
                 }
-                sh "docker push arjunbh/gateway-api"
+                sh "sudo docker push arjunbh/gateway-api"
              }
         }
           stage('SSH to Kubernetes master') {
