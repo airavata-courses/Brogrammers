@@ -44,7 +44,9 @@ pipeline {
                     git pull &&
                     git checkout Kubernetes &&
                     cd gateway_api && 
-                    sudo kubectl apply -f config.yaml"
+                    kubectl delete service &&
+                    kubectl delete deployment gateway-api &&
+                    kubectl apply -f config.yaml"
                 '''    
              }
         }
