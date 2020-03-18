@@ -46,7 +46,7 @@ pipeline {
                     cd Brogrammers &&
                     git pull &&
                     git checkout Kubernetes &&
-                    cd user-manangement && 
+                    cd user_management && 
                     
                     kubectl delete service usermanagement &&
                     kubectl delete deployment usermanangement &&
