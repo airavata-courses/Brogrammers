@@ -14,7 +14,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: model_execution
+  name: modelexecution
 spec:
   selector:
     matchLabels:
@@ -27,7 +27,7 @@ spec:
         app: app
     spec:
       containers:
-      - name: model_execution
+      - name: modelexecution
         image: arjunbh/model-execution
         ports:
         - containerPort: 9010
