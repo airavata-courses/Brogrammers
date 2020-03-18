@@ -29,6 +29,7 @@ node{
                 git checkout Kubernetes &&
                 cd data_retrieval &&
                 sudo kubectl apply -f config.yaml"
+                
             '''    
         }
 
