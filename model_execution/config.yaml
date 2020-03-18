@@ -27,7 +27,7 @@ spec:
         app: app
     spec:
       containers:
-      - name: modelexecution
+      - name: model-execution
         image: arjunbh/model-execution
         ports:
         - containerPort: 9010
