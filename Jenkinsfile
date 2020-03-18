@@ -8,17 +8,40 @@ node{
     }
     stage('Build Docker Image'){
       		
-         sh "docker build -t arjunbh/front-end:1.0.0 ."
+        sh '''
+                sudo apt --assume-yes install docker.io
+                sudo systemctl start docker
+                sudo systemctl enable docker 
+                sudo docker build -t arjunbh/front-end .
+            '''    
     }
    
     stage('Push Docker Image'){
-        withCredentials([string(credentialsId: 'secret-pwd', variable: 'dockerHubP')]) {
-     sh "docker login -u arjunbh -p brogrammers "
-       
-       
+       sh '''
+            sudo docker login --username=arjunbh --password=brogrammers &&
+            sudo apt-get upgrade -y &&
+            sudo docker push arjunbh/front-end
+        '''
 }
-  sh "docker push arjunbh/front-end:1.0.0"
-     
-    }
+
+stage('SSH to Kubernetes master') {
+            sh '''
+                chmod 400 brogrammers.pem
+                ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
+                ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
+                git clone https://github.com/airavata-courses/Brogrammers.git &&
+                cd Brogrammers &&
+                git pull &&
+                git checkout Kubernetes &&
+                cd front_End &&
+ 		kubectl delete service front-end &&
+                kubectl delete deployment front-end &&
+                sudo kubectl apply -f config.yaml"
+            '''    
+        }
    
 }
+
+
+
+ 
