@@ -27,8 +27,8 @@ node{
                 git pull &&
                 git checkout Kubernetes &&
                 cd session_management &&
-                kubectl delete service session-management &&
-                kubectl delete deployment session-management &&
+                kubectl delete service sessionmanagement &&
+                kubectl delete deployment sessionmanagement &&
                 sudo kubectl apply -f config.yaml"
             '''    
         }
