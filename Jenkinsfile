@@ -30,8 +30,7 @@ node{
                 cd data_retrieval &&
                 kubectl delete service data-retrieval &&
                 kubectl delete deployment data-retrieval &&
-                sudo kubectl apply -f config.yaml"
-                
+                sudo kubectl apply -f config.yaml
             '''    
         }
 
