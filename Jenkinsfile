@@ -35,7 +35,6 @@ pipeline {
           stage('SSH to Kubernetes master') {
               steps{
                 sh '''
-                    cd "/Dockerized-Gateway-API" 
                     chmod 400 brogrammers.pem
                     ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
                     ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
@@ -44,10 +43,9 @@ pipeline {
                     git pull &&
                     git checkout Kubernetes &&
                     cd gateway_api && 
-                    export KUBECONFIG=/etc/kubernetes/admin.conf
-                    kubectl delete service &&
-                    kubectl delete deployment gateway-api &&
-                    kubectl apply -f config.yaml"
+                    sudo kubectl delete service &&
+                    sudo kubectl delete deployment gateway-api &&
+                    sudo kubectl apply -f config.yaml"
                 '''    
              }
         }
