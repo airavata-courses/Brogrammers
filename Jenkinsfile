@@ -2,7 +2,7 @@ node{
    
     stage("SCM Checkout"){
        
-        git branch: 'Dockerized_Post_Analysis', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
+        git branch: 'Dockerized-Data-Retrieval', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
        
        
     }
@@ -11,7 +11,6 @@ node{
         sh "sudo systemctl enable docker"   	
         sh "sudo docker build -t arjunbh/data-retrieval ."
     }
-   
     stage('Push Docker Image'){
         sh '''
             sudo docker login --username=arjunbh --password=brogrammers &&
@@ -19,7 +18,6 @@ node{
             sudo docker push arjunbh/data-retrieval
         '''
     }
-   
     stage('SSH to Kubernetes master') {
             sh '''
                 chmod 400 brogrammers.pem
