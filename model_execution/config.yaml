@@ -21,13 +21,13 @@ spec:
       app: app
   replicas: 2
   template:
-    imagePullPolicy: Always
     metadata:
       labels:
         app: app
     spec:
       containers:
       - name: model-execution
+        imagePullPolicy: Always
         image: arjunbh/model-execution
         ports:
         - containerPort: 9010
