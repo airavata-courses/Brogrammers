@@ -5,6 +5,7 @@ pipeline {
             steps {                 
                 sh '''
                     sudo apt-get -s upgrade 
+                    sudo apt-get install default-jdk
                     sudo apt --assume-yes install maven
                     mvn pre-clean
                     mvn compile
