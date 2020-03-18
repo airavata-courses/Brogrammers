@@ -15,7 +15,6 @@ pipeline {
              }        
         }
         stage('Build Docker Image'){
-        sh "docker build -t arjunbh/user-manangement:1.0.0 ."
             steps {
                sh '''
                     sudo apt --assume-yes install docker.io
@@ -23,7 +22,7 @@ pipeline {
                     sudo systemctl enable docker 
                     sudo docker build -t arjunbh/user-manangement:1.0.0 .
                 '''    
-                }
+            }
         }
 
         stage('Push Docker Image'){
@@ -36,23 +35,23 @@ pipeline {
         }
 
         stage('SSH to Kubernetes master') {
-            
-            sh '''
-                 
-                chmod 400 brogrammers.pem
-                ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
-                ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
-                git clone https://github.com/airavata-courses/Brogrammers.git &&
-                cd Brogrammers &&
-                git pull &&
-                git checkout Kubernetes &&
-                cd user-manangement && 
-                
-                kubectl delete service usermanagement &&
-                kubectl delete deployment usermanangement &&
-                kubectl apply -f config.yaml"
-            '''    
+            steps{
+                sh '''
+                    
+                    chmod 400 brogrammers.pem
+                    ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
+                    ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
+                    git clone https://github.com/airavata-courses/Brogrammers.git &&
+                    cd Brogrammers &&
+                    git pull &&
+                    git checkout Kubernetes &&
+                    cd user-manangement && 
+                    
+                    kubectl delete service usermanagement &&
+                    kubectl delete deployment usermanangement &&
+                    kubectl apply -f config.yaml"
+                '''   
+            } 
         }
     }
 }
-
