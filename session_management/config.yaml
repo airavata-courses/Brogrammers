@@ -28,7 +28,7 @@ spec:
       containers:
       - name: session-management-microservice
         imagePullPolicy: Always
-        image: arjunbh/session-management:1.0.0
+        image: arjunbh/session-management
         ports:
         - containerPort: 4001
       restartPolicy: Always
