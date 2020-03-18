@@ -27,8 +27,7 @@ node{
             git pull &&
        
             git checkout Kubernetes &&
-            cd model_execution &&
-            
+            cd model_execution &&  
             sudo kubectl apply -f config.yaml"
         '''    
         }
