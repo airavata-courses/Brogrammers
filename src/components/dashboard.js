@@ -3,28 +3,19 @@ import React, { Component} from 'react';
 import "../style/dashboard.css";
 import Navbar from "./Navbar.js";
 import { Link, Redirect } from 'react-router-dom';
-
+import '../App.css';
 
 export default class dashboard extends Component {
     render() {
         return (
             <div>
+              <div>
                 <Navbar></Navbar>
                 
   <div className="sidebar " role="navigation">
         <div class="sidebar-nav navbar-dark bg-dark" >
           <ul class="nav flex-column" id="side-menu">
-            {/* <li class="nav-item sidebar-search">
-              <div class="input-group custom-search-form">
-                <input type="text" class="form-control" placeholder="Search"/>
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </span>
-              </div>
-            </li>
-   */}
+          
   <li class="nav-item">
               <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> </a>
             </li>
@@ -56,37 +47,40 @@ export default class dashboard extends Component {
         </div>
   
       </div>
-
-      <div id="content">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <div class="card">
-        <div class="card-block">
-          {/* <h4 class="card-title" style={{textAlign:"center"}}>Data Download</h4>
-          <h6 class="card-subtitle mb-2 text-muted">What Task would you like to carry out today</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-      <center>
-          {/* <div class="">
-  <button class="btn btn btn-outline-secondary dropdown-toggle" >  <Redirect to ="/forms"/>Extract
-  <span class="caret"></span></button>
-
-</div> */}
-</center>
-        </div>
+      
       </div>
+      <div id="content">
+      <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+      <div class="card-deck">
+      < div class="card">
+  <h5 class="card-header">How to Go About</h5>
+  <div class="card-body">
+    <h5 class="card-title">Weather  </h5>
+    <p class="card-text">This website provides Next Generation Weather Radar (NEXRAD) data on the NCEI archive base data, called Level-II. We focus on the base data quantity, Reflectivity </p>
+    <a href="https://www.ncdc.noaa.gov/data-access/radar-data/nexrad" className="btn btn-primary">More Information</a>
+  </div>
+</div>
+
+< div class="card">
+  <h5 class="card-header">About us </h5>
+  <div class="card-body">
+    <h5 class="card-title">Team Brogrammers</h5>
+    <p class="card-text">This project is curated by a team of Engineers from Indiana University,Bloomington</p>
+    <a href="https://github.com/airavata-courses/Brogrammers/" class="btn btn-primary">Github</a>
+  </div>
+</div>
+</div>
+    
+
+
+  </div>
+</div>
+
+    
+     
     </div>
+ 
             </div>
         )
     }

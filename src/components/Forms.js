@@ -90,7 +90,7 @@ class Forms extends Component {
         
         console.log("request", SessionData)
 
-        axios.post(`http://gatewayapi:8085/rest/reflectivity/`, SessionData)
+        axios.post(`/reflectivity/`, SessionData)
             .then(res => {
                 this.respone_url = res.data
                 
@@ -114,7 +114,7 @@ class Forms extends Component {
                             <div className='col-sm-12'>
                                 <div className='card' style={{backgroundColor:"#3b7fcc"}}>
                                     <div className='card-header d-flex align-items-center' style={{backgroundColor:"#ffffff"}}>
-                                        <i className='material-icons mr-2' >Reflectivity Data Extractor</i>
+                                        <h3 className='material-icons mr-2' >Reflectivity Data Extractor</h3>
 
                                     </div>  
                                     <div className='card-body text-center'>
