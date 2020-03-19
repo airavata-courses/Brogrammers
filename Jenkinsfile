@@ -32,23 +32,23 @@ pipeline {
                 sh "sudo docker push arjunbh/gateway-api"
              }
         }
-          stage('SSH to Kubernetes master') {
-              steps{
-                sh '''
-                    chmod 400 brogrammers.pem
-                    ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
-                    ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
-                    git clone https://github.com/airavata-courses/Brogrammers.git &&
-                    
-                    cd Brogrammers &&
-                    git pull &&
-                    git checkout Kubernetes &&
-                    cd gateway_api && 
-                    kubectl delete service gatewayapi &&
-                    kubectl delete deployment gatewayapi &&
-                    kubectl apply -f config.yaml"
-                '''    
-             }
+      stage('SSH to Kubernetes master') {
+          steps{
+            sh '''
+                chmod 400 brogrammers.pem
+                ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
+                ssh -i brogrammers.pem ubuntu@149.165.170.140  " rm -rf Brogrammers &&
+                git clone https://github.com/airavata-courses/Brogrammers.git &&
+
+                cd Brogrammers &&
+                git pull &&
+                git checkout Kubernetes &&
+                cd gateway_api && 
+                kubectl delete service gatewayapi &&
+                kubectl delete deployment gatewayapi &&
+                kubectl apply -f config.yaml"
+            '''    
+         }
         }
     }
 }
