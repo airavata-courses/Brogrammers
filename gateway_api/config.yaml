@@ -28,6 +28,6 @@ spec:
       containers:
       - name: gateway-api-microservice
         imagePullPolicy: Always
-        image: arjunbh/gateway-api:1.0.0
+        image: arjunbh/gateway-api:latest
         ports:
         - containerPort: 8085
