@@ -20,12 +20,12 @@ export default class usersessions extends Component {
 
   componentDidMount() {
     axios
-      .get(`${url.sessionManagement}/get_user_session/${localStorage.getItem('user')}`)
+      .get(`/getSessions/${localStorage.getItem('user')}`)
       .then(response => {
         console.log(response.data);
        
 
-        this.setState({ activity: response.data });
+        this.setState({ activity: response.data.userSession });
       })
       .catch(e => {
         console.log(e);

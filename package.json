@@ -24,7 +24,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://gatewayapi:8085/rest",
+  "proxy": "http://gatewayapi:8085/rest"  ,
   "browserslist": {
     "production": [
       ">0.2%",
