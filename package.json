@@ -19,6 +19,10 @@
     "reload": "^3.0.4",
     "request": "^2.88.0"
   },
+  "proxy": "http://gatewayapi:8085",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

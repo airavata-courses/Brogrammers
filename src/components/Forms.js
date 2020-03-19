@@ -90,7 +90,7 @@ class Forms extends Component {
         
         console.log("request", SessionData)
 
-        axios.post(`/reflectivity/`, SessionData)
+        axios.post(`/rest/reflectivity/`, SessionData)
             .then(res => {
                 this.respone_url = res.data
                 
