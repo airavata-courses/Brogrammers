@@ -8,6 +8,7 @@ import Dashboard from './components/dashboard';
 import Forms from './components/Forms.js';
 import './App.css';
 import Navbar from './components/Navbar';
+import Plot from "./components/Plot";
 import usersessions from './components/usersessions';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
         <Route path="/forms" component={Forms} />
         <Route path="/usersessions" component={UserSessions} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/plot" component={Plot} />
       </div>
     );
   }
