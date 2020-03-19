@@ -24,7 +24,11 @@ public class DataRetrieveHandler {
 		ConnectionFactory factory =  new ConnectionFactory();
 
 		Connection conn= factory.newConnection();
-
+		factory.setUsername("guest");
+		factory.setPassword("guest");
+		factory.setVirtualHost("/");
+		factory.setHost("rabbitmq-service");
+		factory.setPort(5672);
 		Channel ch=  conn.createChannel();
 		ch.queueDeclare(REFLECTIVITYQUEUE, false, false, false, null);
 
@@ -36,7 +40,7 @@ public class DataRetrieveHandler {
 
 		ch.basicPublish("", REFLECTIVITYQUEUE, null, obj.toJSONString().getBytes());
 
-
+/*
 		//Get URL from post Analysis
 		ch.queueDeclare(POSTANALYSISREFLECTIVITY, false, false, false, null);
 
@@ -55,13 +59,30 @@ public class DataRetrieveHandler {
 		};
 		ch.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
 		
-		
+		*/
+
+		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+			String message = new String(delivery.getBody(), "UTF-8");
+			outputMessage = message;
+			if(message != null){
+				System.out.println("Result inside DCQ: Image received");
+				System.out.println(" [x] Received and Set: Image");
+			}
+			else{
+				System.out.println("Result inside DCQ: null");
+				System.out.println("[x] Received and Set: null");
+			}            
+		};
+		channel.basicConsume(QUEUPOSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> {
+		});
+
+
 		return outputMessage;
 	}
 
-
+/*
 	private void doWork(String message) {
 		outputMessage = message ;
 		
-	}
+	}*/
 }
