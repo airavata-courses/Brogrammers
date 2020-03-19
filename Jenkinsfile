@@ -21,7 +21,7 @@ pipeline {
                     sudo systemctl start docker
                     sudo systemctl enable docker 
                     
-                    sudo docker build -t arjunbh/user-manangement:1.0.0 .
+                    sudo docker build -t arjunbh/user-manangement .
                 '''    
             }
         }
