@@ -12,7 +12,7 @@ node{
                 sudo apt --assume-yes install docker.io
                 sudo systemctl start docker
                 sudo systemctl enable docker 
-                sudo npm install axios --save
+           
                 sudo docker build -t arjunbh/front-end .
             '''    
     }
