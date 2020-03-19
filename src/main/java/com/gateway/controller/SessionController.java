@@ -15,7 +15,7 @@ import com.gateway.service.SessionService;
 
 @RestController
 @RequestMapping("/rest")
-@CrossOrigin(origins = {"http://localhost:3000","http://localhost:3001"})
+@CrossOrigin(origins = {"http://frontend:3000","http://frontend:3001"})
 public class SessionController {
 
 	@Autowired
