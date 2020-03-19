@@ -24,7 +24,7 @@ public class ActivityController {
 	
 	@PostMapping("/reflectivity")
 	public String getReflectivityPlot(@RequestBody UserSession userSession ) {
-
+		System.out.println("Reached  Activity Controller")
 		//Saving Session
 		sessionService.saveSession(userSession);
 		
