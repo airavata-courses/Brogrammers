@@ -40,10 +40,10 @@ public class DataRetrieveHandler {
 
 		ch.basicPublish("", REFLECTIVITYQUEUE, null, obj.toJSONString().getBytes());
 
-/*
+
 		//Get URL from post Analysis
 		ch.queueDeclare(POSTANALYSISREFLECTIVITY, false, false, false, null);
-
+/*
 		String uRL = new String();
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 
@@ -73,7 +73,7 @@ public class DataRetrieveHandler {
 				System.out.println("[x] Received and Set: null");
 			}            
 		};
-		channel.basicConsume(QUEUPOSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> {
+		channel.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> {
 		});
 
 
