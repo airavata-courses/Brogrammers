@@ -47,7 +47,7 @@ export default class Login extends React.Component {
 		// 	})
 		const { history } = this.props;
 		console.log(url)
-		axios.post(`${url.userManagement}/login`, user, {
+		axios.post(`login`, user, {
 			headers: {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': '*',

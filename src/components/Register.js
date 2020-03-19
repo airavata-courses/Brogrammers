@@ -70,7 +70,7 @@ class Register extends Component {
 		  
 		  };
 		
-		axios.post('${url.userManagement}/user/register', user, {headers: {
+		axios.post('user/register', user, {headers: {
 			'Content-Type': 'application/json',
 			'Access-Control-Allow-Origin': '*',
 		}})
