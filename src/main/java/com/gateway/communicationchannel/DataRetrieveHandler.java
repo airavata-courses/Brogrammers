@@ -73,7 +73,7 @@ public class DataRetrieveHandler {
 				System.out.println("[x] Received and Set: null");
 			}            
 		};
-		channel.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
+		ch.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
 
 
 		return outputMessage;
