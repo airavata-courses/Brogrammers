@@ -35,7 +35,7 @@ def callback(ch, method, properties, body):
     for file in files:
         radar = pyart.io.read_nexrad_archive(file)
         display = pyart.graph.RadarDisplay(radar)
-        fig = plt.figure(figsize=(16, 12))
+        fig = plt.figure(figsize=(12, 12))
 
         ax = fig.add_subplot(111)
         display = pyart.graph.RadarDisplay(radar)
@@ -50,9 +50,9 @@ def callback(ch, method, properties, body):
         with open(file, "rb") as img:
             imgString = base64.b64encode(img.read())
             print(imgString)
-            ApiPayload = str(imgString.decode("utf-8"))
+            ApiPayload = {"radar_img":str(myString.decode("utf-8"))}
         print("Publishing to gateway")
-        channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=ApiPayload)
+        channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=json.dumps(ApiPayload))
        
         
 channel.basic_consume(queue='post-analysis-reflectivity', on_message_callback=callback, auto_ack=True)
