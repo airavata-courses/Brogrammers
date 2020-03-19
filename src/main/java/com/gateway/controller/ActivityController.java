@@ -13,7 +13,7 @@ import com.gateway.service.SessionService;
 
 @RestController()
 @RequestMapping("/rest")
-@CrossOrigin(origins = {"http://localhost:3000","http://localhost:3001"})
+@CrossOrigin
 public class ActivityController {
 	
 	@Autowired
