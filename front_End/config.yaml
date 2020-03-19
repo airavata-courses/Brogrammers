@@ -28,7 +28,7 @@ spec:
       containers:
       - name: front-end-microservice
         imagePullPolicy: Always
-        image: arjunbh/front-end:1.0.0
+        image: arjunbh/front-end
         ports:
         - containerPort: 3000
       restartPolicy: Always
