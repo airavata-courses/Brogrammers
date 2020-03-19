@@ -168,7 +168,7 @@ class Forms extends Component {
                     </button>
                             <button className='btn btn-primary d-flex align-items-center float-right' >
 
-                                Sumbit
+                                Submit
                     </button>
                         </div>
                     </form>
