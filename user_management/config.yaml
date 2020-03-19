@@ -28,7 +28,7 @@ spec:
       containers:
       - name: user-management-microservice
         imagePullPolicy: Always
-        image: arjunbh/user-manangement:1.0.0
+        image: arjunbh/user-manangement:latest
         ports:
         - containerPort: 8090 
 
