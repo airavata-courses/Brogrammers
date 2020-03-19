@@ -13,7 +13,7 @@ import com.gateway.service.UserDetailsService;
 
 @RestController()
 @RequestMapping("/rest")
-@CrossOrigin(origins = {"http://frontend:3000","http://frontend:3001"})
+@CrossOrigin
 public class UserController {
 	
 	@Autowired

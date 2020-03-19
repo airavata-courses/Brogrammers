@@ -13,7 +13,7 @@ import com.gateway.service.SessionService;
 
 @RestController()
 @RequestMapping("/rest")
-@CrossOrigin(origins = {"http://frontend:3000","http://frontend:3001"})
+@CrossOrigin
 public class ActivityController {
 	
 	@Autowired
@@ -24,7 +24,7 @@ public class ActivityController {
 	
 	@PostMapping("/reflectivity")
 	public String getReflectivityPlot(@RequestBody UserSession userSession ) {
-
+		System.out.println("Reached  Activity Controller");
 		//Saving Session
 		sessionService.saveSession(userSession);
 		
