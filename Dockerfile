@@ -5,6 +5,6 @@ RUN mkdir /code
 WORKDIR /code
 ADD . /code/
 RUN npm install
-RUN npm install axios
+RUN sudo npm install axios --save
 EXPOSE 3000
 CMD ["npm","start"]
