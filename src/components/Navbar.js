@@ -8,21 +8,28 @@ export default class Navbar extends Component {
     render() {
         return (
             <div>
-           <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">><Link to="/dashboard">Brogrammers</Link></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        {/* <a class="nav-link"  ><Link to="/dashboard">Home</Link> <span class="sr-only">(current)</span></a> */}
+
+           <nav class="navbar   navbar-dark bg-dark">
+  <a class="navbar-brand"  href="#"><Link to="/dashboard" style={{color:"white" , textDecoration:"none"}}>Brogrammers</Link></a>
+  <ul class="navbar-nav ">
+    <li class="nav-item active w-100">
+        <a class="nav-link"><Link to="/" style={{color:"white", textDecoration:"none" }}>Logout</Link> </a>
       </li>
-      
+    </ul>
+  {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> */}
+  {/* <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link"  ><Link to="/">Logout</Link> </a>
+      </li>
     </ul>
    
    
-  </div>
+  </div> */}
+
+  
 </nav>
 </div>
         )
