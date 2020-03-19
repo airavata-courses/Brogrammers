@@ -16,6 +16,7 @@
     "react-dropdown-select": "^3.11.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.3.1",
+    "reload": "^3.0.4",
     "request": "^2.88.0"
   },
   "scripts": {

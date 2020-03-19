@@ -9,11 +9,11 @@ import "../style/frontpage.css";
 export default class Login extends React.Component {
 	state = {
 		"id": null,
-		"name": "Brogrammers",
+		"name": null,
 		"mobileNumber": null,
 		"address": null,
 		"emailID": null,
-		"password": "1234567890",
+		"password": null,
 		"status": null
 	}
 
@@ -48,16 +48,13 @@ export default class Login extends React.Component {
 		const { history } = this.props;
 		console.log(url)
 		axios.post(`http://gatewayapi:8085/rest/login`, user, {
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-			}
+		
 		})
 			.then(function (response) {
 
 				if (response.status == "200") {
 					console.log("logged in Succesfully");
-					console.log(response)
+					console.log("response",response)
 					localStorage.setItem('user', response.data.id)
 					history.push('/dashboard')
 					// localStorage.setItem(name,this.fullname)
@@ -113,5 +110,3 @@ export default class Login extends React.Component {
 		);
 	}
 }
-
-
