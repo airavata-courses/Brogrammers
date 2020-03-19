@@ -2,11 +2,9 @@
 # Access data 
 import json
 import pika
-#import matplotlib.pyplot as plt
 import tempfile
 import pytz
 from datetime import datetime
-#import pyart
 import nexradaws
 templocation = tempfile.mkdtemp()
 import time
@@ -19,7 +17,7 @@ time.sleep( 50 )
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host = 'rabbit' , port=5672, credentials=credentials))
+            host = 'rabbitmq-service' , port=5672, credentials=credentials))
 
 print ("Connection Established")
 channel = connection.channel()
