@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import request from 'request';
 import '../App.css'
+import url from '../config/default.js';
 import lala from "./giphy.gif";
 import "../style/frontpage.css";
 
@@ -69,7 +70,7 @@ class Register extends Component {
 		  
 		  };
 		
-		axios.post('http://localhost:8080/rest/user/register', user, {headers: {
+		axios.post('${url.userManagement}/user/register', user, {headers: {
 			'Content-Type': 'application/json',
 			'Access-Control-Allow-Origin': '*',
 		}})
