@@ -65,16 +65,15 @@ public class DataRetrieveHandler {
 			String message = new String(delivery.getBody(), "UTF-8");
 			outputMessage = message;
 			if(message != null){
-				System.out.println("Result inside DCQ: Image received");
+				System.out.println("Result inside Data Retrieval Handler: Image received");
 				System.out.println(" [x] Received and Set: Image");
 			}
 			else{
-				System.out.println("Result inside DCQ: null");
+				System.out.println("Result inside Data Retrieval Handler: null");
 				System.out.println("[x] Received and Set: null");
 			}            
 		};
-		channel.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> {
-		});
+		channel.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
 
 
 		return outputMessage;
