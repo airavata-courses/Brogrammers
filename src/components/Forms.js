@@ -92,11 +92,16 @@ class Forms extends Component {
 
         axios.post(`/rest/reflectivity/`, SessionData)
             .then(res => {
-                this.respone_url = res.data
-                
+                if (res) {
+                    this.setState({ loading: false });
+                    localStorage.setItem("plot_url", JSON.stringify(res));
+                    this.props.history.push(`/plot`);
+                    console.log(res);
+                  }
+                //this.respone_url = res.data
                 // check the format of the response object.
-                var win = window.open(res.data, '_blank');
-                win.focus();
+                //var win = window.open(res.data, '_blank');
+                //win.focus();
             }) 
             .catch(e => {
                 console.log(e)
@@ -168,7 +173,7 @@ class Forms extends Component {
                     </button>
                             <button className='btn btn-primary d-flex align-items-center float-right' >
 
-                                Sumbit
+                                Submit
                     </button>
                         </div>
                     </form>
