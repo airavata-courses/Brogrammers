@@ -5,21 +5,21 @@ import json
 import pyart
 import numpy as np
 import io
-#import boto.s3
-#from boto.s3.key import Key
 from datetime import datetime
 import os
 import base64
 import  time
+import logging 
 
 time.sleep( 50 )
 
+
+logging.basicConfig()
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
             host = 'rabbitmq-service' , port=5672, credentials=credentials))
 
-print ("Connection Established")
 channel = connection.channel()
 
 channel.queue_declare(queue='post-analysis-reflectivity')
@@ -30,13 +30,13 @@ channel.queue_declare(queue='post-analysis-reflectivity-gateway')
 
 def callback(ch, method, properties, body):   
     result = json.loads(body)
-    print("Consumed from model_execution")
+    logging.info("Connection Established")
     files =  result['file']
     for file in files:
         radar = pyart.io.read_nexrad_archive(file)
         display = pyart.graph.RadarDisplay(radar)
         fig = plt.figure(figsize=(12, 12))
-
+        
         ax = fig.add_subplot(111)
         display = pyart.graph.RadarDisplay(radar)
         display.plot('reflectivity', 0, ax=ax, title='NEXRAD')
@@ -49,9 +49,9 @@ def callback(ch, method, properties, body):
         file= (os.getcwd() + "/" + "Plots" + "/" + str(datetimeStr) +".png")
         with open(file, "rb") as img:
             imgString = base64.b64encode(img.read())
-            print(imgString)
+            logging.debug("Image in bytes ",imgString)
             ApiPayload = {"radar_img":str(myString.decode("utf-8"))}
-        print("Publishing to gateway")
+        logging.info("Publishing to gateway")
         channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=json.dumps(ApiPayload))
        
         
