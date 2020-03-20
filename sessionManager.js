@@ -47,7 +47,7 @@ app.post('/put_user_into_session', function (req, res, next) {
    }
   }
 
-  console.log(sessionData)
+  console.log("SessionData",sessionData)
 
   new Session(sessionData)
   .save(function(err, done) {
