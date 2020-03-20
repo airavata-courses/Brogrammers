@@ -8,13 +8,13 @@ import "../style/frontpage.css";
 
 export default class Login extends React.Component {
 	state = {
-		"id": null,
-		"name": null,
-		"mobileNumber": null,
-		"address": null,
-		"emailID": null,
-		"password": null,
-		"status": null
+		"id": "",
+		"name": "",
+		"mobileNumber": "",
+		"address": "",
+		"emailID": "",
+		"password": "",
+		"status": ""
 	}
 
 	handleChange = e => {
@@ -51,7 +51,7 @@ export default class Login extends React.Component {
 		// 	.post('http://localhost:8080/rest/login')
 		// 	.on('response', function(response) {
 		// 	console.log(response)
-		// 	})
+		// 	})null
 		const { history } = this.props;
 		console.log(user)
 		axios.post(`/rest/login`, user, {
