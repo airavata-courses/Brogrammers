@@ -13,6 +13,7 @@ class Plot extends Component {
         url: this.userData.radar_img
       });
     }
+    console,log("url",url)
   }
 
   render() {

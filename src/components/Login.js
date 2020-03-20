@@ -30,7 +30,6 @@ export default class Login extends React.Component {
 		this.setState({
 			[name]: value
 		});
-		console.log(name, this.state)
 	// }
 	}
 

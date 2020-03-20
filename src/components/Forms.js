@@ -96,7 +96,7 @@ class Forms extends Component {
                     this.setState({ loading: false });
                     localStorage.setItem("plot_url", JSON.stringify(res));
                     this.props.history.push(`/plot`);
-                    console.log(res);
+                    console.log("this is our res",res);
                   }
                 //this.respone_url = res.data
                 // check the format of the response object.
