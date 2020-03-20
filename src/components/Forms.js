@@ -87,7 +87,7 @@ class Forms extends Component {
         // var SessionData
 
         SessionData.user = localStorage.getItem('user')
-        console.log("user",user)
+        //console.log("user",user)
         console.log("request", SessionData)
 
         axios.post(`/rest/reflectivity/`, SessionData)
