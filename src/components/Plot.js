@@ -17,6 +17,7 @@ class Plot extends Component {
   }
 
   render() {
+      const url = this.state.url;
     return (
       <div className="container">
         <div>
