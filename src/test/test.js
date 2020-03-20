@@ -1,4 +1,4 @@
-<header>
+{/* <header>
   <div class="container">
     <h1>Bootstrap</h1>
     <h3>Accordion</h3>
@@ -280,4 +280,4 @@
   <div class="container">
     <p class="text-muted no-margin">Powered by Ivan 2015</p>
   </div>
-</footer>
+</footer> */}
