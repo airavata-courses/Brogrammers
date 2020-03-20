@@ -119,9 +119,6 @@ class Register extends Component {
 			alert('Passwords do not match or length is not apppropriate')
 		}
 	}
-
-
-
 	render() {
 		return (
 			<div className="bg-img1">
