@@ -65,7 +65,7 @@ class Register extends Component {
 			}
 			return newpass
 		}
-		console.log(encryptPassword('abcd'))
+		// console.log(encryptPassword('abcd'))
 		
 			
 			const user = {
@@ -116,7 +116,7 @@ class Register extends Component {
 								<input
 									type="text"
 									placeholder="Full Name"
-									name="fullname"
+									name="name"
 									value={this.state.fullname}
 									onChange={this.update}
 								/>
@@ -126,7 +126,7 @@ class Register extends Component {
 								<input
 									type="text"
 									placeholder="Enter your email"
-									name="email"
+									name="emailID"
 									value={this.state.email}
 									onChange={this.update}
 								/>
