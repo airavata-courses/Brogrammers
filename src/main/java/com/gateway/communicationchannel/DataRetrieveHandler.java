@@ -22,8 +22,8 @@ public class DataRetrieveHandler {
 
 	public String sendInputForReflectivity(UserSession userSession) throws IOException, TimeoutException {
 		ConnectionFactory factory =  new ConnectionFactory();
-
 		Connection conn= factory.newConnection();
+		System.out.println("Connection received");
 		factory.setUsername("guest");
 		factory.setPassword("guest");
 		factory.setVirtualHost("/");
@@ -37,9 +37,9 @@ public class DataRetrieveHandler {
 		obj.put("date", userSession.getSession().getDate());
 		obj.put("radar",userSession.getSession().getRadar());
 		obj.put("description",userSession.getSession().getDescription());
-
+		System.out.println("Data" + obj);
 		ch.basicPublish("", REFLECTIVITYQUEUE, null, obj.toJSONString().getBytes());
-
+		System.out.println("Connection received");
 
 		//Get URL from post Analysis
 		ch.queueDeclare(POSTANALYSISREFLECTIVITY, false, false, false, null);
