@@ -74,7 +74,7 @@ public class DataRetrieveHandler {
 			}            
 		};
 		ch.basicConsume(POSTANALYSISREFLECTIVITY, true, deliverCallback, consumerTag -> { });
-		Thread.sleep(40000); //TODO: Add a better blocking mechanism
+		try{Thread.sleep(40000);}catch(InterruptedException e){System.out.println(e);}  
 		    if(outputMessage!=null) 
 			System.out.println("Result outside DCQ: Image");
 		    else
