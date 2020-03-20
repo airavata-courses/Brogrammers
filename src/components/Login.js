@@ -17,13 +17,21 @@ export default class Login extends React.Component {
 		"status": null
 	}
 
-	handleChange = event => {
-		this.setState({ userid: event.target.value });
-		this.setState({ fullname: event.target.value });
-		this.setState({ usergroup: event.target.value });
-		this.setState({ emailID: event.target.value });
-		this.setState({ mobile: event.target.value });
-		this.setState({ password: event.target.value });
+	handleChange = e => {
+		// this.setState({ userid: event.target.value });
+		// this.setState({ fullname: event.target.value });
+		// this.setState({ usergroup: event.target.value });
+		// this.setState({ emailID: event.target.value });
+		// this.setState({ mobile: event.target.value });
+		// this.setState({ password: event.target.value });
+
+		let name = e.target.name;
+		let value = e.target.value;
+		this.setState({
+			[name]: value
+		});
+		console.log(name, this.state)
+	// }
 	}
 
 	handleSubmit = event => {
@@ -46,7 +54,7 @@ export default class Login extends React.Component {
 		// 	console.log(response)
 		// 	})
 		const { history } = this.props;
-		console.log(url)
+		console.log(user)
 		axios.post(`/rest/login`, user, {
 			headers: {
 				'Content-Type': 'application/json',
@@ -86,9 +94,9 @@ export default class Login extends React.Component {
 								<input
 									type="text"
 									placeholder="Username..."
-
+									value={this.state.emailID}
 									onChange={this.handleChange}
-									name="email"
+									name="emailID"
 								/>
 							</div>
 
@@ -96,7 +104,7 @@ export default class Login extends React.Component {
 								<input
 									type="password"
 									placeholder="Password..."
-
+									value={this.state.password}
 									onChange={this.handleChange}
 									name="password"
 								/>
