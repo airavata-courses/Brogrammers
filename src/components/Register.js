@@ -57,15 +57,15 @@ class Register extends Component {
 		//  new stwing , append value into new string 
 		//  return 
 		
-		// function encryptPassword(password, key) {
-		// 	var newpass = ''
-		// 	for (var i = 0; i < password.length; i++) {
-		// 		var a = (password.charCodeAt(i) + key) % 255
-		// 		newpass += String.fromCharCode(a)
-		// 	}
-		// 	return newpass
-		// }
-		// console.log(encryptPassword('abcd'))
+		function encryptPassword(password, key) {
+			var newpass = ''
+			for (var i = 0; i < password.length; i++) {
+				var a = (password.charCodeAt(i) + key) % 255
+				newpass += String.fromCharCode(a)
+			}
+			return newpass
+		}
+		console.log(encryptPassword('abcd'))
 		
 			
 			const user = {
@@ -74,12 +74,12 @@ class Register extends Component {
 				mobileNumber: this.state.mobileNumber,
 				address: this.state.address,
 				emailID: this.state.emailID,
-				password:this.state.password,
-				// password: encryptPassword(this.state.password, 3),
+				// password:this.state.password,
+				password: encryptPassword(this.state.password, 3),
 
 			};
 			console.log(user)
-			axios.post('http://gatewayapi:8085/rest/user/register', user, {
+			axios.post('/rest/user/register', user, {
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
