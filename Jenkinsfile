@@ -17,7 +17,7 @@ node{
             sudo docker push arjunbh/session-management
         '''
     }
-     stage('SSH to Kubernetes master') {
+    stage('SSH to Kubernetes master') {
             sh '''
                 chmod 400 brogrammers.pem
                 ssh -o StrictHostKeyChecking=no -i brogrammers.pem ubuntu@149.165.170.140  uptime
