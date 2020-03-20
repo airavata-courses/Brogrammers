@@ -66,6 +66,7 @@ export default class Login extends React.Component {
 					console.log("logged in Succesfully");
 					console.log("response",response)
 					localStorage.setItem('user', response.data.id)
+					console.log("val",user)
 					history.push('/dashboard')
 					// localStorage.setItem(name,this.fullname)
 					// return <Redirect to='/dashboard' />
