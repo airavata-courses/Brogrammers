@@ -8,10 +8,12 @@ from datetime import datetime
 import nexradaws
 templocation = tempfile.mkdtemp()
 import time
+import logging
 
 conn = nexradaws.NexradAwsInterface()
 
 
+logging.basicConfig()
 time.sleep( 50 )
 
 # establishing connection to RabbitMQ server
@@ -31,7 +33,7 @@ channel.queue_declare(queue='model-execution')
 
 def consumer_callback(ch, method, properties, body):
     data =json.loads(body)
-    print("Consumed from data_retrieval", data)
+    logging.debug("Consumed from data_retrieval", data)
     date = data['date']
     year, month, day = date.split('-')
     radars = conn.get_avail_radars(year,month,day)
@@ -50,7 +52,7 @@ def consumer_callback(ch, method, properties, body):
         print("{} volume scan time {}".format(scan.radar_id,scan.scan_time))
         file.append(scan.filepath)
     Obj = {"file": file}
-    print("Publishing to model_execution")
+    logging.debug("Publishing to model_execution")
     channel.basic_publish(exchange='', routing_key='model-execution', body=json.dumps(Obj))
     
 
