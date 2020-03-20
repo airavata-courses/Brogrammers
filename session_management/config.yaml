@@ -26,7 +26,7 @@ spec:
         app: app
     spec:
       containers:
-      - name: session-management-microservice
+      - name: sessionmanagement
         imagePullPolicy: Always
         image: arjunbh/session-management
         ports:
