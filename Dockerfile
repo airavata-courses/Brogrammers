@@ -8,9 +8,7 @@ RUN pip3 install matplotlib
 RUN pip3 install boto
 RUN pip3 install pika
 RUN pip3 install netCDF4
-RUN git clone https://github.com/ARM-DOE/pyart.git &&\
-    cd pyart &&\
-    python setup.py install
+RUN pip install arm-pyart
 
 
 
