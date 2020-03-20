@@ -143,7 +143,13 @@ class Register extends Component {
 							</div>
 
 							<div className="password">
-								<input type="password" placeholder="Confirm Password" name="retype_password" />
+								<input 
+									type="password" 
+									placeholder="Confirm Password" 
+									name="retype_password"
+									value={this.state.retype_password}
+									onChange={this.update}
+								/>
 							</div>
 
 							<input type="submit" value="Login" />
