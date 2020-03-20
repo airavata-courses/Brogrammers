@@ -21,9 +21,10 @@ public class DataRetrieveHandler {
     private String outputMessage;
 
 	public String sendInputForReflectivity(UserSession userSession) throws IOException, TimeoutException {
+		System.out.println("Connection received");
 		ConnectionFactory factory =  new ConnectionFactory();
 		Connection conn= factory.newConnection();
-		System.out.println("Connection received");
+		System.out.println("Connection after connection factory");
 		//factory.setUsername("guest");
 		//factory.setPassword("guest");
 		//factory.setVirtualHost("/");
