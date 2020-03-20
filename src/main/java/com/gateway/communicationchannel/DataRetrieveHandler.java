@@ -23,12 +23,13 @@ public class DataRetrieveHandler {
 	public String sendInputForReflectivity(UserSession userSession) throws IOException, TimeoutException {
 		System.out.println("Connection received");
 		ConnectionFactory factory =  new ConnectionFactory();
+		factory.setHost("rabbitmq-service");
 		Connection conn= factory.newConnection();
 		System.out.println("Connection after connection factory");
 		//factory.setUsername("guest");
 		//factory.setPassword("guest");
 		//factory.setVirtualHost("/");
-		factory.setHost("rabbitmq-service");
+		
 		//factory.setPort(5672);
 		Channel ch=  conn.createChannel();
 		ch.queueDeclare(REFLECTIVITYQUEUE, false, false, false, null);
