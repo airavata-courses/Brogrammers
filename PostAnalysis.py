@@ -50,7 +50,7 @@ def callback(ch, method, properties, body):
         with open(file, "rb") as img:
             imgString = base64.b64encode(img.read())
             logging.debug("Image in bytes ",imgString)
-            ApiPayload = {"radar_img":str(myString.decode("utf-8"))}
+            ApiPayload = {"radar_img":str(imgString.decode("utf-8"))}
         logging.info("Publishing to gateway")
         channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=json.dumps(ApiPayload))
        
