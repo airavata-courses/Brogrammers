@@ -23,17 +23,16 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
 
 
 channel = connection.channel()
-
 channel.queue_declare(queue='data-retrieval-reflectivity')
 
 # producer queue 
 channel.queue_declare(queue='model-execution')
 
 
-
+logging.info("Connection Established Waiting for data")
 def consumer_callback(ch, method, properties, body):
     data =json.loads(body)
-    logging.info("Connection Established")
+    logging.info("Connection Established received data ",data)
     date = data['date']
     year, month, day = date.split('-')
     radars = conn.get_avail_radars(year,month,day)
