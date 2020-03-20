@@ -27,12 +27,11 @@ channel.queue_declare(queue='data-retrieval-reflectivity')
 
 # producer queue 
 channel.queue_declare(queue='model-execution')
-
-
 logging.info("Connection Established Waiting for data")
 def consumer_callback(ch, method, properties, body):
     data =json.loads(body)
-    logging.info("Connection Established received data ",data)
+    print("Data ", data)
+    logging.debug("Connection Established received data ",data)
     date = data['date']
     year, month, day = date.split('-')
     radars = conn.get_avail_radars(year,month,day)
@@ -52,6 +51,7 @@ def consumer_callback(ch, method, properties, body):
         file.append(scan.filepath)
     Obj = {"file": file}
     logging.info("Publishing to model_execution")
+    logging.debug("Data sent",Obj)
     channel.basic_publish(exchange='', routing_key='model-execution', body=json.dumps(Obj))
     
 
