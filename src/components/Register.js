@@ -66,7 +66,7 @@ class Register extends Component {
 		// 	return newpass
 		// }
 		// console.log(encryptPassword('abcd'))
-		if (this.state.retype_password === this.state.password && this.state.password.length > 6) {
+		
 			
 			const user = {
 				name: this.state.name,
@@ -99,9 +99,7 @@ class Register extends Component {
 					console.log("", error);
 					console.log("data", { user });
 				});
-		} else {
-			alert('Passwords do not match or length is not apppropriate')
-		}
+	
 	}
 
 
