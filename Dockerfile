@@ -8,7 +8,7 @@ RUN pip3 install matplotlib
 RUN pip3 install boto
 RUN pip3 install pika
 RUN pip3 install netCDF4
-RUN pip install arm-pyart
+RUN pip3 install arm-pyart
 
 
 
