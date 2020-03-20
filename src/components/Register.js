@@ -61,7 +61,7 @@ class Register extends Component {
 		//  new stwing , append value into new string 
 		//  return 
 		
-<<<<<<< HEAD
+
 		// function encryptPassword(password, key) {
 		// 	var newpass = ''
 		// 	for (var i = 0; i < password.length; i++) {
@@ -72,7 +72,7 @@ class Register extends Component {
 		// }
 		// console.log(encryptPassword('abcd'))
 		if (this.state.retype_password === this.state.password && this.state.password.length > 6) {
-=======
+
 		axios.post('/rest/user/register', user, {headers: {
 			'Content-Type': 'application/json',
 			'Access-Control-Allow-Origin': '*',
@@ -83,7 +83,6 @@ class Register extends Component {
 			  {
 				console.log("Registered Succesfully");
 				history.push('/dashboard')
->>>>>>> 0ecfe9affea4315c3846625202b9ebf7e8e38661
 			
 			const user = {
 				name: this.state.name,
