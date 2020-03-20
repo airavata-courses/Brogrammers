@@ -26,10 +26,6 @@ class Register extends Component {
 		this.displayLogin = this.displayLogin.bind(this);
 	}
 
-
-
-
-
 	// http://localhost:8080/rest/user/register
 
 	update(e) {
@@ -61,7 +57,6 @@ class Register extends Component {
 		//  new stwing , append value into new string 
 		//  return 
 		
-
 		// function encryptPassword(password, key) {
 		// 	var newpass = ''
 		// 	for (var i = 0; i < password.length; i++) {
@@ -72,17 +67,6 @@ class Register extends Component {
 		// }
 		// console.log(encryptPassword('abcd'))
 		if (this.state.retype_password === this.state.password && this.state.password.length > 6) {
-
-		axios.post('/rest/user/register', user, {headers: {
-			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*',
-		}})
-		  .then(function (response) {
-			 
-			  if (response.status == "200")
-			  {
-				console.log("Registered Succesfully");
-				history.push('/dashboard')
 			
 			const user = {
 				name: this.state.name,
@@ -95,7 +79,7 @@ class Register extends Component {
 
 			};
 			console.log(user)
-			axios.post('http://gatewayapi:8085/rest/user/registe', user, {
+			axios.post('/rest/user/register', user, {
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
@@ -119,6 +103,9 @@ class Register extends Component {
 			alert('Passwords do not match or length is not apppropriate')
 		}
 	}
+
+
+
 	render() {
 		return (
 			<div className="bg-img1">
