@@ -75,7 +75,7 @@ class Register extends Component {
 				address: this.state.address,
 				emailID: this.state.emailID,
 				// password:this.state.password,
-				password: encryptPassword(this.state.password, 3),
+				password: encryptPassword(this.state.password, 0),
 
 			};
 			console.log(user)
