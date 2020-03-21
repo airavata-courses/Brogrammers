@@ -14,7 +14,6 @@ conn = nexradaws.NexradAwsInterface()
 
 
 logging.basicConfig()
-time.sleep( 50 )
 
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
