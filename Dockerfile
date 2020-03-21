@@ -12,6 +12,6 @@ RUN pip3 install nexradaws
 RUN pip3 install pytz
 
 EXPOSE 9002
-
+COPY DataRetrival.py .
 CMD python3 DataRetrieval.py
 
