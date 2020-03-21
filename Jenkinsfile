@@ -27,8 +27,6 @@ node{
             git pull &&
             git checkout Kubernetes &&
             cd rabbitmq_service &&
-            kubectl delete service rabbitmq-service &&
-            kubectl delete deployment rabbitmq-service &&
             sudo kubectl apply -f config.yaml"
         '''    
         }
