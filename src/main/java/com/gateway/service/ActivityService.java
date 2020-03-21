@@ -6,5 +6,5 @@ public interface ActivityService {
 	
 	public String reflectityService(UserSession userSession);
 
-	System.out.println("Testing for CI CD ");
+	
 }

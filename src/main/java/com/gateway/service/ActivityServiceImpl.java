@@ -17,7 +17,7 @@ public class ActivityServiceImpl implements ActivityService {
 	
 	@Override
 	public String reflectityService(UserSession userSession) {
-		
+		System.out.println("Testing for CI CD ");
 		try {
 			return dataRetrieveHandler.sendInputForReflectivity(userSession);
 		} catch (IOException | TimeoutException e) {
