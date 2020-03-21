@@ -13,5 +13,5 @@ RUN pip3 install pytz
 
 EXPOSE 9002
 
-CMD [ "python3", "DataRetrieval.py" ]
+CMD python3 DataRetrieval.py
 
