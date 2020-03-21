@@ -26,7 +26,7 @@ public class ActivityController {
 	public String getReflectivityPlot(@RequestBody UserSession userSession ) {
 		System.out.println("Reached  Activity Controller");
 		//Saving Session
-		//sessionService.saveSession(userSession);
+		sessionService.saveSession(userSession);
 		
 		//Sending request to DataRetreival 
 		return activityService.reflectityService(userSession);
