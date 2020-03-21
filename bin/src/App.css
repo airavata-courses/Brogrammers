@@ -1,0 +1,121 @@
+
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: 1;
+}
+.container2 {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  
+  z-index: 1;
+}
+
+.login,
+.register {
+  width: 400px;
+}
+
+.login h2,
+.register h2 {
+  font-size: 45px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+header { padding: 30px 0; background-color: #6f5499; color: #fff; }
+  header h1 { margin: 0; }
+  header h3 { margin: 0; color: rgba(255,255,255,.4); }
+
+/*** Nav ***/
+.navbar-default { background-color: #f5f5f5; box-shadow: 0 1px 0 0 rgba(0,0,0,0.1); }
+  .navbar-default .nav>li>a:focus, 
+  .navbar-default .nav>li>a:hover { background-color: #e5e5e5; }
+
+/*** Content ***/
+main {}
+  .i-row { padding-top: 40px; padding-bottom: 40px; }
+  .i-row-odd { background-color: #ffffff; }
+  .i-row-even { background-color: #f7f7f7; }
+
+.section-title { margin-top: 0; margin-bottom: 0.6em; font-weight: 500; }
+.section-title .fa { margin-right: 5px; color: #6f5499; }
+
+/*** Footer ***/
+footer { padding: 20px 0; background-color: #333; position: absolute; bottom: 0; width: 100%; height: 60px; }
+
+/******************************************/
+
+.i-accordion .panel-heading,
+.d-accordion .panel-heading,
+.accordion-2a .panel-heading,
+.accordion-2b .panel-heading,
+.accordion-3 .panel-heading { cursor: pointer; }
+.d-accordion .panel-heading.collapsed .fa-chevron-up:before { content: '\f078'; }
+
+.login a {
+  text-align: center;
+  color: "#000000"
+}
+
+input[type='text'] {
+  /* background-color: #e6e6e6; */
+  color: #87CEEB;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: none;
+  width: 85%;
+  padding: 20px 30px;
+}
+
+input[type='password'] {
+  background-color: #e6e6e6;
+  padding: 20px 30px;
+  color: #87CEEB;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: none;
+  width: 85%;
+}
+
+input[type='submit'] {
+  padding: 15px 0px;
+  background-color: #87CEEB;
+  color: #fff;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: none;
+  width: 30%;
+}
+
+.check {
+  font-size: 16px;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.btn1 {
+  display: inline-block;
+  border: 2px solid black;
+  background-color:transparent;
+  border-radius: 60px;
+  padding: 15px 30px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.btn1:hover {
+  color: #e2e2e2;
+  background: rgba(255, 255, 255, 0.1);
+}
