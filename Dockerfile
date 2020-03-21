@@ -12,4 +12,4 @@ RUN pip3 install arm-pyart
 
 
 
-CMD [ "python3", "./PostAnalysis.py" ]
+CMD python3 PostAnalysis.py
