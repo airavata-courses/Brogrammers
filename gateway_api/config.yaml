@@ -19,7 +19,7 @@ spec:
   selector:
     matchLabels:
       app: java-ms
-  replicas: 5
+  replicas: 3
   template:
     metadata:
       labels:
