@@ -1,33 +1,25 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: data-retrieval
-spec:
- type: LoadBalancer
- ports:
-  - targetPort: 9002
-    port: 9002
-    nodePort: 30050
- selector:
-  app: python
----
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/1/./kompose-linux-amd64 convert
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: data-retrieval
   name: data-retrieval
 spec:
-  selector:
-    matchLabels:
-      app: python
-  replicas: 5
+  replicas: 1
+  strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: python
+        io.kompose.service: data-retrieval
     spec:
       containers:
-      - name: data-retrieval
-        imagePullPolicy: Always
-        image: arjunbh/data-retrieval
-        ports:
-        - containerPort: 9002
+      - image: arjunbh/data-retrieval:latest
+        name: data-retrieval
+        resources: {}
+      restartPolicy: Always
+status: {}
