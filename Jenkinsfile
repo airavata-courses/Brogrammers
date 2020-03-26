@@ -43,7 +43,9 @@ pipeline {
                 cd Brogrammers &&
                 git pull &&
                 git checkout Kubernetes &&
-                cd gateway_api && 
+                cd gateway_api &&
+                kubectl delete service gatewayapi &&
+                kubectl delete deployment gatewayapi &&
                 kubectl apply -f config.yaml"
             '''    
          }
