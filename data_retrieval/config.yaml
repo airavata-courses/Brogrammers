@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: data-retrieval
   name: data-retrieval
 spec:
-  replicas: 1
+  replicas: 3
   strategy: {}
   template:
     metadata:
