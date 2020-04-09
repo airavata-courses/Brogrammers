@@ -6,12 +6,10 @@ node{
        
        
     }
-    stage('Running test cases') {
-            steps {                 
-                sh '''
-                    python3 "Dockerized-Data-Retrieval/DataRetrievalTest/DataRetrievalTest.py"
-                  '''
-             }
+    stage('Running test cases') {                   
+        sh '''
+            python3 "Dockerized-Data-Retrieval/DataRetrievalTest/DataRetrievalTest.py"
+            '''
     }
     stage('Build Docker Image'){
         sh "sudo systemctl start docker"
