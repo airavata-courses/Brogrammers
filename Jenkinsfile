@@ -7,9 +7,9 @@ node{
        
     }
     stage('Running test cases') {                   
-        sh '''
-            python3 "DataRetrievalTest/DataRetrievalTest.py"
-        '''
+        sh "pip3 install nexradaws"
+        sh "python3 DataRetrievalTest/DataRetrievalTest.py"
+    
     }
     stage('Build Docker Image'){
         sh "sudo systemctl start docker"
