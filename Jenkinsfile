@@ -7,6 +7,7 @@ node{
        
     }
     stage('Running test cases') {   
+        sh "RUN pip3 install --upgrade pip"
         sh "pip3 install -r requirements.txt"            
         sh "python3 DataRetrievalTest/DataRetrievalTest.py"
     
