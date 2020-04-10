@@ -1,25 +1,34 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  annotations:
-    kompose.cmd: /snap/kompose/1/./kompose-linux-amd64 convert
-    kompose.version: 1.18.0 (06a2e56)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: postanalysis
   name: postanalysis
 spec:
+ type: LoadBalancer
+ ports:
+  - targetPort: 9020
+    port: 9020
+    nodePort: 30070
+ selector:
+  app: app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postanalysis
+spec:
+  selector:
+    matchLabels:
+      app: app
   replicas: 3
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: postanalysis
+        app: app
     spec:
       containers:
-      - image: arjunbh/post-analysis:latest
-        name: post-analysis
-        resources: {}
+      - name: post-analysis
+        imagePullPolicy: Always
+        image: arjunbh/post-analysis
+        ports:
+        - containerPort: 9020
       restartPolicy: Always
-status: {}

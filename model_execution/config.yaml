@@ -1,25 +1,34 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  annotations:
-    kompose.cmd: /snap/kompose/1/./kompose-linux-amd64 convert
-    kompose.version: 1.18.0 (06a2e56)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: modelexecution
   name: modelexecution
 spec:
+ type: LoadBalancer
+ ports:
+  - targetPort: 9010
+    port: 9010
+    nodePort: 30060
+ selector:
+  app: app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: modelexecution
+spec:
+  selector:
+    matchLabels:
+      app: app
   replicas: 3
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: modelexecution
+        app: app
     spec:
       containers:
-      - image: arjunbh/model-execution:latest
-        name: model-execution
-        resources: {}
+      - name: model-execution
+        imagePullPolicy: Always
+        image: arjunbh/model-execution
+        ports:
+        - containerPort: 9010
       restartPolicy: Always
-status: {}
