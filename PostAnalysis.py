@@ -27,7 +27,7 @@ channel.queue_declare(queue='post-analysis-reflectivity')
 # Producer
 channel.queue_declare(queue='post-analysis-reflectivity-gateway')
 
-def plot(file):
+def plot_daat(file):
     radar = pyart.io.read_nexrad_archive(file)
     display = pyart.graph.RadarDisplay(radar)
     fig = plt.figure(figsize=(12, 12))

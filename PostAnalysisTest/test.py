@@ -1,14 +1,14 @@
 import unittest
-from PostAnalysis import plot
+from PostAnalysisTest import plot_data
 import warnings
-with warnings.catch_warnings():
-    warnings.filterwarnings("ignore",category=DeprecationWarning)
-    import pyart,matplotlib
+import pyart
+import numpy as np
+import matplotlib.pyplot as plt
 
 class Tests(unittest.TestCase):
     
-    def test_dr1(self):
-        result,plot = plot('KTLX20160531_000848_V06.gz')
+    def test1(self):
+        result,plot_result = plot_data('KTLX20160531_000848_V06.gz')
         expected = 'success'
         self.assertEqual(result,expected,msg = "1 failed")
 
