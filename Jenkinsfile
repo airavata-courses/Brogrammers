@@ -1,5 +1,5 @@
 node{
-   
+    agent { docker { image 'python:3.7.2' } }
     stage("SCM Checkout"){
        
         git branch: 'Dockerized-Data-Retrieval', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
