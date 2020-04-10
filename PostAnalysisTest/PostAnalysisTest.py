@@ -23,6 +23,6 @@ def plot_data(file):
     img_data = io.BytesIO()
     plt.savefig(os.getcwd() + "/" + "Plots" + "/" + str(datetimeStr)+".png")
     img_data.seek(0)
-    
+    output = "success"
     file_out= (os.getcwd() + "/" + "Plots" + "/" + str(datetimeStr) +".png")
-    return 'success',file_out
+    return output,file_out
