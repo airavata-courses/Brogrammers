@@ -8,7 +8,7 @@ node{
     }
     stage('Running test cases') {   
         sh "pip install --upgrade pip"
-        sh "pip install nexradaws"            
+        sh "sudo -H python -m pip install nexradaws"            
         sh "python3 DataRetrievalTest/DataRetrievalTest.py"
     
     }
