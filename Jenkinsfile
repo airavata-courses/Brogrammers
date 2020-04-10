@@ -6,11 +6,11 @@ node{
        
     }
     stage('Build dependencies'){
-        sh 'pip install -r requirements.txt'
+        sh 'pip3 install -r requirements.txt'
     }   
     stage('Running test cases') {   
-        sh "sudo pip install nexradaws"          
-        sh "python3 DataRetrievalTest/DataRetrievalTest.py"
+        sh 'sudo pip3 install nexradaws'        
+        sh 'python3 DataRetrievalTest/DataRetrievalTest.py'
     
     }
     stage('Build Docker Image'){
