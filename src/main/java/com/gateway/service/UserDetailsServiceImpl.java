@@ -52,6 +52,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public User signOut(User user) {
 		return userConsumer.signout(user);
 	}
+
+	@Override
+	public void setUserConsumer(UserConsumer userConsumer) {
+		this.userConsumer = userConsumer;
+		
+	}
 	
 	
 	

@@ -2,6 +2,7 @@ package com.gateway.service;
 
 import com.gateway.pojo.User;
 import com.gateway.pojo.UserList;
+import com.gateway.restclient.UserConsumer;
 
 public interface UserDetailsService {
 
@@ -11,6 +12,8 @@ public interface UserDetailsService {
 	
 	public User registernewUser(User user);
 
-	public User signOut(User user);	
+	public User signOut(User user);
+
+	public void setUserConsumer(UserConsumer userConsumer);	
 
 }

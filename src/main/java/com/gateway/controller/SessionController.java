@@ -30,4 +30,10 @@ public class SessionController {
 	public SessionList getUserSession(@PathVariable final String id ) {
 		return sessionService.getSessions(id);
 	}
+
+	public void setUserDetailsServiceImpl(SessionService sessionService2) {
+		this.sessionService = sessionService2;
+		// TODO Auto-generated method stub
+		
+	}
 }

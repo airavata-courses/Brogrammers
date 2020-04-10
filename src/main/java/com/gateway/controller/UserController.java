@@ -40,4 +40,8 @@ public class UserController {
 		return userDetailsService.signOut(user);
 	}
 
+	public void setUserDetailsServiceImpl(UserDetailsService userDetailsService2) {
+		this.userDetailsService = userDetailsService2;
+	}
+
 }
