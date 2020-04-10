@@ -1,5 +1,5 @@
 import unittest
-from init_test import get_scans
+from test import get_scans
 
 class Test(unittest.TestCase):
 

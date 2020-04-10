@@ -9,7 +9,7 @@ node{
         sh 'pip install -r requirements.txt'
     }   
     stage('Running test cases') {   
-                   
+        sh "sudo pip3 install nexradaws"          
         sh "python3 DataRetrievalTest/DataRetrievalTest.py"
     
     }
