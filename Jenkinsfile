@@ -4,11 +4,12 @@ node{
        
         git branch: 'Dockerized-Data-Retrieval', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
        
-       
     }
+    stage('Build dependencies'){
+        sh 'pip install -r requirements.txt'
+    }   
     stage('Running test cases') {   
-        sh "pip install --upgrade pip"
-        sh "sudo -H python -m pip install nexradaws"            
+                   
         sh "python3 DataRetrievalTest/DataRetrievalTest.py"
     
     }
