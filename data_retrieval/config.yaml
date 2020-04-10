@@ -1,25 +1,33 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  annotations:
-    kompose.cmd: /snap/kompose/1/./kompose-linux-amd64 convert
-    kompose.version: 1.18.0 (06a2e56)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: data-retrieval
   name: data-retrieval
 spec:
+ type: LoadBalancer
+ ports:
+  - targetPort: 9002
+    port: 9002
+    nodePort: 30050
+ selector:
+  app: python
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-retrieval
+spec:
+  selector:
+    matchLabels:
+      app: python
   replicas: 3
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: data-retrieval
+        app: python
     spec:
       containers:
-      - image: arjunbh/data-retrieval:latest
-        name: data-retrieval
-        resources: {}
-      restartPolicy: Always
-status: {}
+      - name: data-retrieval
+        imagePullPolicy: Always
+        image: arjunbh/data-retrieval
+        ports:
+        - containerPort: 9002
