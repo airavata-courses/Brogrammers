@@ -6,16 +6,16 @@ node{
        
        
     }
-    stage('Running test cases') {   
-        sh "pip install --upgrade pip"
-        sh "pip install -r requirements.txt"            
-        sh "python3 DataRetrievalTest/DataRetrievalTest.py"
-    
-    }
     stage('Build Docker Image'){
         sh "sudo systemctl start docker"
         sh "sudo systemctl enable docker"   	
         sh "sudo docker build -t arjunbh/data-retrieval ."
+    }
+     stage('Running test cases') {   
+        sh "pip install --upgrade pip"
+        sh "pip install -r requirements.txt"            
+        sh "python3 DataRetrievalTest/DataRetrievalTest.py"
+    
     }
     stage('Push Docker Image'){
         sh '''
