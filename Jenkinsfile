@@ -1,12 +1,13 @@
 node{
-   
     stage("SCM Checkout"){
-       
         git branch: 'Dockerized_Post_Analysis', credentialsId: 'git-creds', url: 'https://github.com/airavata-courses/Brogrammers/'
-       
-       
     }
-   
+    stage('Build dependencies'){
+        sh 'pip3 install -r requirements.txt'
+    } 
+    stage('Running test cases') {          
+        sh 'python3 PostAnalysisTest/test.py'
+    }
     stage('Build Docker Image'){
         sh "sudo systemctl start docker"
         sh "sudo systemctl enable docker"   	
