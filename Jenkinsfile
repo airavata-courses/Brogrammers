@@ -28,7 +28,8 @@ pipeline {
                     sudo apt --assume-yes install docker.io
                     sudo systemctl start docker
                     sudo systemctl enable docker 
-                    sudo docker build -t arjunbh/user-manangement:1.0.0 .
+                    
+                    sudo docker build -t arjunbh/user-manangement .
                 '''    
             }
         }
@@ -54,10 +55,11 @@ pipeline {
                     cd Brogrammers &&
                     git pull &&
                     git checkout Kubernetes &&
-                    cd user-manangement && 
+                    cd user_management && 
                     
+                       
                     kubectl delete service usermanagement &&
-                    kubectl delete deployment usermanangement &&
+                    kubectl delete deployment usermanagement &&
                     kubectl apply -f config.yaml"
                 '''   
             } 
