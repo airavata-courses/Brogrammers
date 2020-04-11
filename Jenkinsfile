@@ -14,6 +14,14 @@ pipeline {
                 '''
              }        
         }
+        stage('Running test cases') {
+            steps {                 
+                sh '''
+                   echo 'Start running test cases'
+                   mvn test
+                  '''
+             }
+        }
         stage('Build Docker Image'){
             steps {
                sh '''

@@ -91,4 +91,9 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		userBean.setStatus("Signed Out");
 		return userRepository.save(userBean);
 	}
+
+	@Override
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 }

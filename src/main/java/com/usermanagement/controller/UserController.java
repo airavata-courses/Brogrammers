@@ -37,4 +37,9 @@ public class UserController {
 	public User signOut(@RequestBody User userBean){
 		return userDetailsService.signOut(userBean);
 	}
+
+	public void setUserDetailsService(UserDetailsService userDetailsService2) {
+		this.userDetailsService = userDetailsService2;
+		
+	}
 }
