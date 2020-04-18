@@ -52,8 +52,13 @@ def consumer_callback(ch, method, properties, body):
     Obj = {"file": file}
     logging.info("Publishing to model_execution")
     print("Data sent",Obj)
-    channel.basic_publish(exchange='', routing_key='model-execution', body=json.dumps(Obj))
     
+    data_connection = pika.BlockingConnection(pika.ConnectionParameters(host = 'rabbitmq-service' , port=5672, credentials=credentials))
+    data_channel = data_connection.channel()
+    data_channel.exchange_declare(exchange='topic_logs', exchange_type='topic')
+    routing_key = 'reflectivity'
+    data_channel.basic_publish(exchange='topic_logs',routing_key='model-execution',body=json.dumps(Obj))
+    data_connection.close()
 channel.basic_consume(
     queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
 
