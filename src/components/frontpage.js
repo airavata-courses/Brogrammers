@@ -17,12 +17,12 @@ export default class frontpage extends Component {
             <div className='row content'>
               <div className='col-lg-12'></div>
               <div className='col-lg-12'>
-                <h1 style={{ fontSize: "100px" }}>Brogrammers</h1>
+                <h1 style={{ fontSize: "100px" }}>Weather Forecast</h1>
                 <h2 style={{
                   maxWidth: "700px",
                   fontSize: "30px",
                   width: "90%"
-                }}>Weather Forecast</h2>
+                }}>Team Brogrammers</h2>
 
                 <span className='btn1'><Link to="/login">Login</Link></span>
                 <span className='btn1'><Link to="/register">Register</Link></span>
