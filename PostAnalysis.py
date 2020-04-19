@@ -11,7 +11,6 @@ import base64
 import  time
 import logging 
 
-time.sleep( 50 )
 
 
 logging.basicConfig()
