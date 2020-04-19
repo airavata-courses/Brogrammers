@@ -34,52 +34,60 @@ export default class Login extends React.Component {
 	}
 
 	handleSubmit = event => {
-		event.preventDefault();
+        event.preventDefault();
 
-		const user = {
-			name: this.state.name,
-			id: this.state.id,
-			mobileNumber: this.state.mobileNumber,
-			address: this.state.address,
-			emailID: this.state.emailID,
-			password: this.state.password,
-			status: this.state.status
+        const user = {
+            name: this.state.name,
+            id: this.state.id,
+            mobileNumber: this.state.mobileNumber,
+            address: this.state.address,
+            emailID: this.state.emailID,
+            password: this.state.password,
+            status: this.state.status
 
-		};
+        };
 
-		// request
-		// 	.post('http://localhost:8080/rest/login')
-		// 	.on('response', function(response) {
-		// 	console.log(response)
-		// 	})null
-		const { history } = this.props;
+        // request
+        //  .post('http://localhost:8080/rest/login')
+        //  .on('response', function(response) {
+        //  console.log(response)
+        //  })
+        const { history } = this.props;
 		console.log(user)
-		axios.post(`/rest/login`, user, {
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-			}
-		})
-			.then(function (response) {
+			// axios.post(`/rest/login`, user, {
 
-				if (response.status == "200") {
-					console.log("logged in Succesfully");
-					console.log("response",response)
-					localStorage.setItem('user', response.data.id)
-					console.log("val",user)
-					history.push('/dashboard')
-					// localStorage.setItem(name,this.fullname)
-					// return <Redirect to='/dashboard' />
+        axios.post(`/rest/login`, user, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            }
+        })
+            .then(function (response) {
+                debugger;
+                if (response.status == "200") {
+                    if(response.data.status =="incorrect password.Try logging in again"){
+                        window.alert('Incorrect password.Try logging in again')
+                    }else if(response.data.status == "No user found."){
+                        window.alert('No user found with given email ID.')
+                    }else if(response.data.status == "Logged In"){
+                        console.log("response",response)
+                        localStorage.setItem('user', response.data.id)
+                        console.log("User ID",localStorage.getItem(user))
+                        history.push('/dashboard')
+                    }else{
+                        window.alert('Something went wrong. Please try again')
+                    }
 
-				}
-				console.log(response);
-			})
-			.catch(function (error) {
-				console.log("ALLAL", error);
-				console.log("data", { user });
-			});
+                }else{
+                    window.alert('Something went wrong. Please try again')
+                }
+            })
+            .catch(function (error) {
+                console.log("ALLAL", error);
+                console.log("data", { user });
+            });
 
-	}
+    }
 
 
 
