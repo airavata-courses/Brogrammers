@@ -14,11 +14,12 @@ logging.basicConfig()
 credentials = pika.PlainCredentials(username='guest', password='guest')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
             host = 'rabbitmq-service' , port=5672, credentials=credentials))
+# Consumer
+channel = connection.channel()
 channel.queue_declare(queue='model-execution')
  
-logging.info("Connection Established")
+print("Connection Established")
 
-channel = connection.channel()
  # Publisher 
 channel.queue_declare(queue='post-analysis-reflectivity')
 data_send = []
