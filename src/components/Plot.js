@@ -10,7 +10,7 @@ class Plot extends Component {
    
     if (localStorage.getItem("plot_url")) {
       this.setState({
-        url: this.userData.radar_img
+        url: this.userData.data.radar_img
       });
     }
     // console.log("url",url)
