@@ -27,7 +27,7 @@ channel.queue_declare(queue='post-analysis-reflectivity')
 # Producer
 channel.queue_declare(queue='post-analysis-reflectivity-gateway')
 
-def plot_daat(file):
+def plot_data(file):
     radar = pyart.io.read_nexrad_archive(file)
     display = pyart.graph.RadarDisplay(radar)
     fig = plt.figure(figsize=(12, 12))
@@ -51,7 +51,7 @@ def callback(ch, method, properties, body):
     logging.info("Connection Established")
     files =  result['file']
     for file in files:
-        output,file = plot(file)
+        output,file = plot_data(file)
         with open(file, "rb") as img:
             imgString = base64.b64encode(img.read())
             logging.debug("Image in bytes ",imgString)
