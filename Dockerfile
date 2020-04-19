@@ -9,7 +9,7 @@ RUN npm install
 
 RUN npm install axios 
 EXPOSE 3000
-CMD ["npm","start"]
+CMD ["npm","run","build"]
 
 # FROM node:alpine as builder
 # WORKDIR /app

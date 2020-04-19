@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import image1 from "../images/wave-bot.png";
-import image2 from "../images/wave-mid.png";
-import image3 from "../images/wave-top.png";
+
 import "../style/frontpage.css";
 
 
@@ -29,18 +27,7 @@ export default class frontpage extends Component {
               </div>
             </div>
           </div>
-        {/* <div>
-        <div class="waveWrapperInner bgTop" style={{zIndex:"-1"}}>
-
-          <div class="wave waveTop" style={{ backgroundImage: 'url(' + image1 + ')' }}></div>
-        </div>
-        <div class="waveWrapperInner bgMiddle">
-          <div class="wave waveTop" style={{ backgroundImage: 'url(' + image2 + ')' }}></div>
-        </div>
-        <div class="waveWrapperInner bgBottom">
-          <div class="wave waveTop" style={{ backgroundImage: 'url(' + image3 + ')' }}></div>
-        </div>
-        </div> */}
+       
         <div >
         
          
