@@ -8,13 +8,13 @@ import json
 import logging
 import time
 
-time.sleep( 50 )
 logging.basicConfig()
 
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
             host = 'rabbitmq-service' , port=5672, credentials=credentials))
+channel.queue_declare(queue='model-execution')
  
 logging.info("Connection Established")
 
