@@ -13,7 +13,7 @@ import logging
 conn = nexradaws.NexradAwsInterface()
 
 
-logging.basicConfig()
+
 
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
@@ -25,13 +25,13 @@ channel = connection.channel()
 channel.queue_declare(queue='data-retrieval-reflectivity')
 
 # producer queue 
-print("Connection established")
+logging.warning("Connection established")
 channel.queue_declare(queue='model-execution')
-logging.info("Connection Established Waiting for data")
+logging.warning("Connection Established Waiting for data")
 def consumer_callback(ch, method, properties, body):
     data =json.loads(body)
-    print("Data ", data)
-    logging.debug("Connection Established received data ",data)
+    logging.warning("Data ", data)
+    logging.warning("Connection Established received data ",data)
     date = data['date']
     year, month, day = date.split('-')
     radars = conn.get_avail_radars(year,month,day)
@@ -43,7 +43,7 @@ def consumer_callback(ch, method, properties, body):
     end = central_timezone.localize (datetime(int(year),int(month),int(day),19,0))
     scans = conn.get_avail_scans_in_range(start, end, radar_station)
     results = conn.download(scans[0], templocation)
-    logging.info("Result scan ",results.success)
+    logging.warning("Result scan ",results.success)
     file = []
 
     for scan in results.iter_success():
