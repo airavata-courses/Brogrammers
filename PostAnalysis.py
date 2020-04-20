@@ -13,7 +13,7 @@ import logging
 
 
 
-logging.basicConfig()
+
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
