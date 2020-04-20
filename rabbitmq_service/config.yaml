@@ -6,8 +6,8 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: rabbitmq-service
-  name: rabbitmq-service
+    io.kompose.service: rabbitmq
+  name: rabbitmq
 spec:
   ports:
   - name: "15672"
@@ -17,7 +17,7 @@ spec:
     port: 5672
     targetPort: 5672
   selector:
-    io.kompose.service: rabbitmq-service
+    io.kompose.service: rabbitmq
 status:
   loadBalancer: {}
 ---
@@ -29,8 +29,8 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: rabbitmq-service
-  name: rabbitmq-service
+    io.kompose.service: rabbitmq
+  name: rabbitmq
 spec:
   replicas: 1
   strategy: {}
@@ -38,11 +38,11 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: rabbitmq-service
+        io.kompose.service: rabbitmq
     spec:
       containers:
-      - image: arjunbh/rabbitmq-service
-        name: rabbitmq-service
+      - image: arjunbh/rabbitmq
+        name: rabbitmq
         ports:
         - containerPort: 15672
         - containerPort: 5672
