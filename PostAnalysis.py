@@ -47,13 +47,13 @@ def plot_data(file):
 
 def callback(ch, method, properties, body):   
     result = json.loads(body)
-    logging.info("Connection Established")
+    logging.warning("Connection Established  Post Analysis")
     files =  result['file']
     for file in files:
         output,file = plot_data(file)
         with open(file, "rb") as img:
             imgString = base64.b64encode(img.read())
-            logging.debug("Image in bytes ",imgString)
+            logging.warning("Image in bytes ",imgString)
             ApiPayload = {"radar_img":str(imgString.decode("utf-8"))}
         logging.info("Publishing to gateway")
         channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity-gateway', body=json.dumps(ApiPayload))
