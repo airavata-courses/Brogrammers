@@ -8,7 +8,7 @@ import json
 import logging
 import time
 
-logging.basicConfig()
+
 
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
@@ -18,14 +18,14 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
 channel = connection.channel()
 channel.queue_declare(queue='model-execution')
  
-print("Connection Established")
+logging.warning("Connection Established Model Execution")
 
  # Publisher 
 channel.queue_declare(queue='post-analysis-reflectivity')
 data_send = []
 def callback(ch, method, properties, body):
     data = json.loads(body) 
-    logging.debug("Data sent: ",data)
+    logging.warning("Data sent from model execution: ",data)
     channel.basic_publish(exchange='', routing_key='post-analysis-reflectivity', body=json.dumps(data))
         
 
