@@ -26,11 +26,11 @@ public class DataRetrieveHandler {
 		factory.setHost("rabbitmq-service");
 		Connection conn= factory.newConnection();
 		System.out.println("Connection after connection factory");
-		//factory.setUsername("guest");
-		//factory.setPassword("guest");
+		factory.setUsername("guest");
+		factory.setPassword("guest");
 		//factory.setVirtualHost("/");
+		factory.setPort(5672);
 		
-		//factory.setPort(5672);
 		Channel ch=  conn.createChannel();
 		ch.queueDeclare(REFLECTIVITYQUEUE, false, false, false, null);
 
