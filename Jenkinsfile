@@ -35,7 +35,7 @@ node{
                 git pull &&
                 git checkout Kubernetes &&
                 cd data_retrieval &&
-                
+                kubectl delete deployment data-retrieval &&
                 sudo kubectl apply -f config.yaml "
             '''    
         }
