@@ -19,10 +19,8 @@ conn = nexradaws.NexradAwsInterface()
 credentials = pika.PlainCredentials(username='guest', password='guest')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
             host = 'rabbitmq' , port=5672, credentials=credentials))
-
-
 channel = connection.channel()
-channel.queue_declare(queue='data-retrieval-reflectivity')
+
 
 # producer queue 
 logging.warning("Connection established")
@@ -52,12 +50,13 @@ def consumer_callback(ch, method, properties, body):
     Obj = {"file": file}
     logging.info("Publishing to model_execution")
     print("Data sent",Obj)
-    
     channel.basic_publish(exchange='', routing_key='model-execution', body=json.dumps(Obj))
-channel.basic_consume(
-    queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
-
-channel.start_consuming()
-
+    
+while True:
+    channel.basic_consume(queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
+    channel.start_consuming()
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host = 'rabbitmq' , port=5672, credentials=credentials))
+    channel = connection.channel()
 
 
