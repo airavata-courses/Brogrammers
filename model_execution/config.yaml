@@ -18,7 +18,7 @@ spec:
         io.kompose.service: model-execution
     spec:
       containers:
-      - image: arjunbh/model-execution:latest
+      - image: arjunbh/model-execution
         name: model-execution
         resources: {}
       restartPolicy: Always
