@@ -13,7 +13,7 @@ import time
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host = 'rabbitmq' , port=15672, credentials=credentials))
+            host = 'rabbitmq' , port=5672, credentials=credentials))
 # Consumer
 channel = connection.channel()
 channel.queue_declare(queue='model-execution')
