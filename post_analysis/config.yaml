@@ -18,7 +18,7 @@ spec:
         io.kompose.service: post-processing
     spec:
       containers:
-      - image: arjunbh/post-analysis:latest
+      - image: arjunbh/post-analysis
         name: post-processing
         resources: {}
       restartPolicy: Always
