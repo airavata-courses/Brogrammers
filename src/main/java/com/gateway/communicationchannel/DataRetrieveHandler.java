@@ -29,7 +29,7 @@ public class DataRetrieveHandler {
 		factory.setUsername("guest");
 		factory.setPassword("guest");
 		//factory.setVirtualHost("/");
-		factory.setPort(15672);
+		factory.setPort(5672);
 		
 		Channel ch=  conn.createChannel();
 		ch.queueDeclare(REFLECTIVITYQUEUE, false, false, false, null);
