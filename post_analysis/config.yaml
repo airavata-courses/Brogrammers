@@ -1,34 +1,25 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: postanalysis
-spec:
- type: LoadBalancer
- ports:
-  - targetPort: 9020
-    port: 9020
-    nodePort: 30070
- selector:
-  app: app
----
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: postanalysis
+  annotations:
+    kompose.cmd: /snap/kompose/1/./kompose-linux-amd64 convert
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: post-processing
+  name: post-processing
 spec:
-  selector:
-    matchLabels:
-      app: app
-  replicas: 3
+  replicas: 1
+  strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: app
+        io.kompose.service: post-processing
     spec:
       containers:
-      - name: post-analysis
-        imagePullPolicy: Always
-        image: arjunbh/post-analysis
-        ports:
-        - containerPort: 9020
+      - image: arjunbh/post-analysis
+        name: post-processing
+        resources: {}
       restartPolicy: Always
+status: {}

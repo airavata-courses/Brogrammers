@@ -18,7 +18,7 @@ spec:
         io.kompose.service: data-retrieval
     spec:
       containers:
-      - image: arjunbh/data-retrieval:latest
+      - image: arjunbh/data-retrieval
         name: data-retrieval
         resources: {}
       restartPolicy: Always
