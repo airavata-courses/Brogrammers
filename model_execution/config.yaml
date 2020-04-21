@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: model-execution
   name: model-execution
 spec:
-  replicas: 1
+  replicas: 3
   strategy: {}
   template:
     metadata:
