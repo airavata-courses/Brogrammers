@@ -30,7 +30,6 @@ node{
                 git pull &&
                 git checkout Kubernetes &&
                 cd post_analysis &&
-                kubectl delete deployment post-analysis &&
                 sudo kubectl apply -f config.yaml"
                 
             '''    
