@@ -79,7 +79,7 @@ class Register extends Component {
 
 			};
 			console.log(user)
-			axios.post('/rest/user/register', user, {
+			axios.post('http://gatewayapi:8085/rest/user/register', user, {
 				headers: {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
