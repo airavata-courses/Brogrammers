@@ -19,14 +19,14 @@ spec:
   selector:
     matchLabels:
       app: app
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
         app: app
     spec:
       containers:
-      - name: session-management-microservice
+      - name: sessionmanagement
         imagePullPolicy: Always
         image: arjunbh/session-management
         ports:
