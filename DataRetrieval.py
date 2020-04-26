@@ -13,8 +13,7 @@ import logging
 conn = nexradaws.NexradAwsInterface()
 
 
-LOG_FILENAME = 'logs.log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+
 
 # establishing connection to RabbitMQ server
 credentials = pika.PlainCredentials(username='guest', password='guest')
