@@ -20,8 +20,16 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get install -y curl ca-certificates amqp-tools python3 dnsutils
 
-RUN pip3 --no-cache-dir install -r requirements.txt
+ADD DataRetrieval.py /
+RUN pip3 install numpy 
+RUN pip3 install pandas
+RUN pip3 install scipy
+RUN pip3 install pika
+RUN pip3 install datetime
+
+RUN pip3 install nexradaws
+RUN pip3 install pytz
 
 EXPOSE 9002
 
-CMD [ "python3" , "data_retrieval.py" ]
+CMD [ "python3" , "DataRetrieval.py" ]
