@@ -7,6 +7,7 @@
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "http-proxy-middleware": "^1.0.3",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "popper.js": "^1.16.1",
@@ -15,11 +16,10 @@
     "react-dom": "^16.4.2",
     "react-dropdown-select": "^3.11.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.3.1",
+    "react-scripts": "^3.4.1",
     "reload": "^3.0.4",
     "request": "^2.88.0"
   },
-
   "eslintConfig": {
     "extends": "react-app"
   },
