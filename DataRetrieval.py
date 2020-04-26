@@ -28,13 +28,13 @@ channel = connection.channel()
 channel.queue_declare(queue='data-retrieval-reflectivity')
 
 # producer queue 
-logging.debug("Connection established")
+logging.warning("Connection established")
 channel.queue_declare(queue='model-execution')
-logging.debug("Connection Established Waiting for data")
+logging.warning("Connection Established Waiting for data")
 def consumer_callback(ch, method, properties, body):
     data =json.loads(body)
-    logging.debug("Data ", data)
-    logging.debug("Connection Established received data ",data)
+    logging.warning("Data ", data)
+    logging.warning("Connection Established received data ",data)
     date = data['date']
     year, month, day = date.split('-')
     radars = conn.get_avail_radars(year,month,day)
@@ -46,14 +46,14 @@ def consumer_callback(ch, method, properties, body):
     end = central_timezone.localize (datetime(int(year),int(month),int(day),19,0))
     scans = conn.get_avail_scans_in_range(start, end, radar_station)
     results = conn.download(scans[0], templocation)
-    logging.debug("Result scan ",results.success)
+    logging.warning("Result scan ",results.success)
     file = []
 
     for scan in results.iter_success():
         print("{} volume scan time {}".format(scan.radar_id,scan.scan_time))
         file.append(scan.filepath)
     Obj = {"file": file}
-    logging.debug("Publishing to model_execution")
+    logging.warning("Publishing to model_execution")
     print("Data sent",Obj)
     channel.basic_publish(exchange='', routing_key='model-execution', body=json.dumps(Obj))
     
