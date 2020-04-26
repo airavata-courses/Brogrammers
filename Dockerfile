@@ -10,7 +10,7 @@ RUN pip3 install datetime
 
 RUN pip3 install nexradaws
 RUN pip3 install pytz
-RUN apt-get install -y curl ca-certificates amqp-tools python dnsutils
+
 
 EXPOSE 9002
 
