@@ -72,7 +72,7 @@ class Forms extends Component {
 
     handleSubmit(e) {
         e.stopPropagation();
-        console.log(this.data) 
+        // console.log(this.data) 
         var SessionData = {}  
         var session = {
             radar: this.state.radar,
@@ -87,10 +87,10 @@ class Forms extends Component {
         // var SessionData
 
         SessionData.user = localStorage.getItem('user')
-        //console.log("user",user)
+        console.log("user",user)
         console.log("request", SessionData)
 
-        axios.post(`http://gatewayapi:8085/rest/reflectivity/`, SessionData)
+        axios.post(`/rest/reflectivity/`, SessionData)
             .then(res => {
                 if (res) {
                     this.setState({ loading: false });
