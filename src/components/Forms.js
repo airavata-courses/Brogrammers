@@ -72,7 +72,7 @@ class Forms extends Component {
 
     handleSubmit(e) {
         e.stopPropagation();
-        // console.log(this.data) 
+        console.log(this.data) 
         var SessionData = {}  
         var session = {
             radar: this.state.radar,
