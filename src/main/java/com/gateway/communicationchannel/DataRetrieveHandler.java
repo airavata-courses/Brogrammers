@@ -28,7 +28,7 @@ public class DataRetrieveHandler {
 		System.out.println("Connection after connection factory");
 		factory.setUsername("guest");
 		factory.setPassword("guest");
-		//factory.setVirtualHost("/");
+		factory.setVirtualHost("/");
 		factory.setPort(5672);
 		
 		Channel ch=  conn.createChannel();
