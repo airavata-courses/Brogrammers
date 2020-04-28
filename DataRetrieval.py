@@ -27,7 +27,7 @@ channel.queue_declare(queue='data-retrieval-reflectivity')
 
 # producer queue 
 logging.warning("Connection established")
-
+channel.queue_declare(queue='model-execution1')
 logging.warning("Connection Established Waiting for data")
 def consumer_callback(ch, method, properties, body):
     data =json.loads(body)
@@ -53,20 +53,13 @@ def consumer_callback(ch, method, properties, body):
     Obj = {"file": file}
     logging.warning("Publishing to model_execution",Obj)
     print("Data sent",Obj)
-
-
-    microservice_connection = pika.BlockingConnection(pika.ConnectionParameters(host = 'rabbitmq' , port=5672, credentials=credentials))
-    microservice_channel = microservice_connection.channel()
-    #microservice_channel.exchange_declare(exchange='model-execution', exchange_type='topic')
-    microservice_channel.queue_declare(queue='model-execution1')
-    microservice_channel.basic_publish(exchange='', routing_key='model-execution1', body=json.dumps(Obj))
+    channel.basic_publish(exchange='', routing_key='model-execution1', body=json.dumps(Obj))
     logging.warning("Published to model_execution")
 
 while TRUE:
-            
-     channel.basic_consume(queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
-     channel.start_consuming()
-     logging.warning("Data Recieved from gateway")
-     connection = pika.BlockingConnection( pika.ConnectionParameters(host = 'rabbitmq' , port = 5672 , credentials = credentials ) )
-     channel = connection.channel( )
+    channel.basic_consume(queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
+    channel.start_consuming()
+    logging.warning("Data Recieved from gateway")
+    connection = pika.BlockingConnection( pika.ConnectionParameters(host = 'rabbitmq' , port = 5672 , credentials = credentials ) )
+    channel = connection.channel( )
 
