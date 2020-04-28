@@ -56,10 +56,9 @@ def consumer_callback(ch, method, properties, body):
     channel.basic_publish(exchange='', routing_key='model-execution1', body=json.dumps(Obj))
     logging.warning("Published to model_execution")
 
-while TRUE:
-    channel.basic_consume(queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
-    channel.start_consuming()
-    logging.warning("Data Recieved from gateway")
-    connection = pika.BlockingConnection( pika.ConnectionParameters(host = 'rabbitmq' , port = 5672 , credentials = credentials ) )
-    channel = connection.channel( )
+channel.basic_consume(queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
+channel.start_consuming()
+logging.warning("Data Recieved from gateway")
+#connection = pika.BlockingConnection( pika.ConnectionParameters(host = 'rabbitmq' , port = 5672 , credentials = credentials ) )
+#channel = connection.channel( )
 
