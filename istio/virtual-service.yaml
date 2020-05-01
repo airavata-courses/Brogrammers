@@ -8,17 +8,8 @@ spec:
   gateways:
   - gateway
   http:
-  - match:
-    - uri:
-        exact: /
-    - uri:
-        exact: /callback
-    - uri:
-        prefix: /static
-    - uri:
-        regex: '^.*\.(ico|png|jpg)$'
   - route:
     - destination:
         host: frontend.default.svc.cluster.local
         port:
-            number: 80
+            number: 3000
