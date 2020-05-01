@@ -1,6 +1,6 @@
 kind: VirtualService
 metadata:
-  name: gatewayapi
+  name: gatewayapi-retry
 spec:
   hosts:
   - gatewayapi

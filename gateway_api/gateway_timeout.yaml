@@ -1,7 +1,7 @@
 
 kind: VirtualService
 metadata:
-  name: gatewayapi
+  name: gatewayapi-timeout
 spec:
   hosts:
   - gatewayapi

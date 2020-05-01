@@ -1,6 +1,6 @@
 kind: VirtualService
 metadata:
-  name: gatewayapi
+  name: gatewayapi-503
 spec:
   hosts:
   - gatewayapi
