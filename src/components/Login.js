@@ -56,7 +56,7 @@ export default class Login extends React.Component {
 		console.log(user)
 			// axios.post(`/rest/login`, user, {
 
-        axios.post(`http://gatewayapi:8085/rest/login`, user, {
+        axios.post(`/rest/login`, user, {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
