@@ -1,0 +1,13 @@
+kind: VirtualService
+metadata:
+  name: gatewayapi
+spec:
+  hosts:
+  - gatewayapi
+  http:
+  - route:
+    - destination:
+        host: gatewayapi
+    retries:
+      attempts: 3
+      perTryTimeout: 2s

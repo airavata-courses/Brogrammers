@@ -1,0 +1,12 @@
+
+kind: VirtualService
+metadata:
+  name: gatewayapi
+spec:
+  hosts:
+  - gatewayapi
+  http:
+  - route:
+    - destination:
+        host: gatewayapi
+    timeout: 1.000s

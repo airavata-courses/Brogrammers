@@ -1,0 +1,15 @@
+kind: VirtualService
+metadata:
+  name: gatewayapi
+spec:
+  hosts:
+  - gatewayapi
+  http:
+  - route:
+    - destination:
+        host: gatewayapi
+        subset: app-gatewayapi
+    fault:
+      abort:
+        httpStatus: 503
+        percent: 30
