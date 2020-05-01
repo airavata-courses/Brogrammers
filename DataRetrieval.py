@@ -27,7 +27,7 @@ channel.queue_declare(queue='data-retrieval-reflectivity')
 
 # producer queue 
 logging.warning("Connection established")
-channel.queue_declare(queue='model-execution1')
+channel.queue_declare(queue='model-execution')
 logging.warning("Connection Established Waiting for data")
 def consumer_callback(ch, method, properties, body):
     data =json.loads(body)
@@ -53,7 +53,7 @@ def consumer_callback(ch, method, properties, body):
     Obj = {"file": file}
     logging.warning("Publishing to model_execution",Obj)
     print("Data sent",Obj)
-    channel.basic_publish(exchange='', routing_key='model-execution1', body=json.dumps(Obj))
+    channel.basic_publish(exchange='', routing_key='model-execution', body=json.dumps(Obj))
     logging.warning("Published to model_execution")
 
 channel.basic_consume(queue='data-retrieval-reflectivity', on_message_callback=consumer_callback, auto_ack=True)
