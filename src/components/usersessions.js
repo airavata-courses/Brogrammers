@@ -20,7 +20,7 @@ export default class usersessions extends Component {
 
   componentDidMount() {
     axios
-      .get(`/getSessions/${localStorage.getItem('user')}`)
+      .get(`http://gatewayapi:8085/getSessions/${localStorage.getItem('user')}`)
       .then(response => {
         console.log(response.data);
        
