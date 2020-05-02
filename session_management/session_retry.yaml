@@ -1,14 +1,14 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: gatewayapi-retry
+  name: sessionmanagement-retry
 spec:
   hosts:
-  - gatewayapi
+  - sessionmanagement
   http:
   - route:
     - destination:
-        host: gatewayapi
+        host: sessionmanagement
     retries:
       attempts: 5
       perTryTimeout: 2s
