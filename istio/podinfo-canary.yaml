@@ -27,7 +27,7 @@ spec:
     - gateway
     # Istio virtual service host names (optional)
     hosts:
-    - http://149.165.170.140:32214
+    - podinfo.149.165.170.140
     # Istio traffic policy (optional)
     trafficPolicy:
       tls:
@@ -56,7 +56,7 @@ spec:
       thresholdRange:
         min: 99
       interval: 1m
-    - name: latency
+    - name: latency 	
       # maximum req duration P99
       # milliseconds
       thresholdRange:
