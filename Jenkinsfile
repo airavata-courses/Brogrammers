@@ -55,7 +55,6 @@ pipeline {
                 kubectl delete service gatewayapi &&
                 kubectl delete deployment gatewayapi &&
                 kubectl apply -f config.yaml && 
-		kubectl apply -f gateway_503.yaml &&
 		kubectl apply -f gateway_retry.yaml &&
 		kubectl apply -f gateway_delay.yaml &&
 		kubectl apply -f gateway_timeout.yaml"
