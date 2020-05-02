@@ -30,64 +30,64 @@ export default class Login extends React.Component {
 		this.setState({
 			[name]: value
 		});
-	// }
+		// }
 	}
 
 	handleSubmit = event => {
-        event.preventDefault();
+		event.preventDefault();
 
-        const user = {
-            name: this.state.name,
-            id: this.state.id,
-            mobileNumber: this.state.mobileNumber,
-            address: this.state.address,
-            emailID: this.state.emailID,
-            password: this.state.password,
-            status: this.state.status
+		const user = {
+			name: this.state.name,
+			id: this.state.id,
+			mobileNumber: this.state.mobileNumber,
+			address: this.state.address,
+			emailID: this.state.emailID,
+			password: this.state.password,
+			status: this.state.status
 
-        };
+		};
 
-        // request
-        //  .post('http://localhost:8080/rest/login')
-        //  .on('response', function(response) {
-        //  console.log(response)
-        //  })
-        const { history } = this.props;
+		// request
+		//  .post('http://localhost:8080/rest/login')
+		//  .on('response', function(response) {
+		//  console.log(response)
+		//  })
+		const { history } = this.props;
 		console.log(user)
-			// axios.post(`/rest/login`, user, {
+		// axios.post(`/rest/login`, user, {
 
-        axios.post(`/rest/login`, user, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-            }
-        })
-            .then(function (response) {
-                debugger;
-                if (response.status == "200") {
-                    if(response.data.status =="incorrect password.Try logging in again"){
-                        window.alert('Incorrect password.Try logging in again')
-                    }else if(response.data.status == "No user found."){
-                        window.alert('No user found with given email ID.')
-                    }else if(response.data.status == "Logged In"){
-                        console.log("response",response)
-                        localStorage.setItem('user', response.data.id)
-                        console.log("User ID",localStorage.getItem(user))
-                        history.push('/dashboard')
-                    }else{
-                        window.alert('Something went wrong. Please try again')
-                    }
+		axios.post(`http://gatewayapi:8085/rest/login`, user, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+			}
+		})
+			.then(function (response) {
+				debugger;
+				if (response.status == "200") {
+					if (response.data.status == "incorrect password.Try logging in again") {
+						window.alert('Incorrect password.Try logging in again')
+					} else if (response.data.status == "No user found.") {
+						window.alert('No user found with given email ID.')
+					} else if (response.data.status == "Logged In") {
+						console.log("response", response)
+						localStorage.setItem('user', response.data.id)
+						console.log("User ID", localStorage.getItem(user))
+						history.push('/dashboard')
+					} else {
+						window.alert('Something went wrong. Please try again')
+					}
 
-                }else{
-                    window.alert('Something went wrong. Please try again')
-                }
-            })
-            .catch(function (error) {
-                console.log("ALLAL", error);
-                console.log("data", { user });
-            });
+				} else {
+					window.alert('Something went wrong. Please try again')
+				}
+			})
+			.catch(function (error) {
+				console.log("ALLAL", error);
+				console.log("data", { user });
+			});
 
-    }
+	}
 
 
 
