@@ -10,5 +10,5 @@ spec:
     - destination:
         host: gatewayapi
     retries:
-      attempts: 3
+      attempts: 5
       perTryTimeout: 2s
