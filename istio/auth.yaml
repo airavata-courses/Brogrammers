@@ -1,7 +1,7 @@
-apiVersion: "security.istio.io/v1beta1"
-kind: "PeerAuthentication"
+apiVersion: “authentication.istio.io/v1alpha1”
+kind: “Policy”
 metadata:
-  name: "default"
+  name: “default”
+  namespace: “default”
 spec:
-  mtls:
-    mode: STRICT
+  peers:
