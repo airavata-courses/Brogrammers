@@ -1,7 +1,7 @@
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "MeshPolicy"
 metadata:
-  name: deny-all
-  namespace: default
+  name: "default"
 spec:
-  {}
+  peers:
+  - mtls: {}
