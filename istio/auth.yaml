@@ -2,13 +2,13 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: service-httpbin.default.svc.cluster.local
-  namespace: default
+  namespace: defualt
 spec:
   rules:
   - from:
     - source:
         principals:
-        - old-td/ns/duplicate/*
+        - default
     to:
     - operation:
         methods:
