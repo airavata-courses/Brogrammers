@@ -3,11 +3,11 @@
 
 ## Getting Started
 
-For Initial deployment please visit [Link](https://github.com/airavata-courses/Brogrammers/wiki/Assignment-1) 
+For Initial deployment please visit [link](https://github.com/airavata-courses/Brogrammers/wiki/Assignment-1) 
 	
 ## Contributing
 
-Please read [This](https://github.com/airavata-courses/Brogrammers/wiki) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [this](https://github.com/airavata-courses/Brogrammers/wiki) for details on our code of conduct, and the process for submitting pull requests to us.
 
 
 ## Authors -
